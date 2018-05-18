@@ -4,11 +4,11 @@ import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.object.*;
 
-public class mapController implements MapComponentInitializedListener {
+public class mapCreator implements MapComponentInitializedListener {
     private GoogleMapView mapView;
     private GoogleMap map;
 
-    mapController() {
+    mapCreator() {
         mapView = new GoogleMapView();
         mapView.addMapInitializedListener(this);
     }
@@ -24,7 +24,7 @@ public class mapController implements MapComponentInitializedListener {
         mapOptions.center(new LatLong(59.9342, 30.33501))
                 .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
-                .panControl(false)
+                .panControl(true)
                 .rotateControl(false)
                 .scaleControl(false)
                 .streetViewControl(false)
@@ -42,7 +42,6 @@ public class mapController implements MapComponentInitializedListener {
                 .animation(Animation.DROP);
 
         Marker marker = new Marker( markerOptions );
-        //marker.
         map.addMarker(marker);
 
     }

@@ -1,10 +1,10 @@
 package ui;
 
-public class Query {
 
-    boolean check;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
-    private void check() {
-        check = true;
-    }
+public class Query  {
+
 }
