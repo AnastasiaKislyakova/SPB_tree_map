@@ -21,6 +21,7 @@ public class Query extends HBox{
         this.species.setText(species);
         this.color.setRadius(7);
         this.color.setFill(color);
+        this.color.setStroke(Color.BLACK);
         this.visibility.setSelected(true);
         this.visibility.setDisable(false);
 
