@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.mainStageController">
+  <children>
+    <ToolBar minHeight="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <Button fx:id="filterButton" mnemonicParsing="false" text="Отфильтровать" />
+        <Button id="filterButton" mnemonicParsing="false" text="Распознать" />
+      </items>
+    </ToolBar>
+    <StackPane fx:id="mainContent" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0" />
+    <AnchorPane fx:id="navList" prefWidth="180.0" style="-fx-background-color:white" translateX="-180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
+      <children>
+        <VBox id="VBox" alignment="CENTER" prefHeight="484.0" prefWidth="180.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+            <VBox id="VBox" alignment="CENTER" spacing="5.0">
+              <children>
+                <TextField minWidth="-Infinity" prefWidth="150.0" />
+                <ColorPicker minWidth="-Infinity" prefWidth="150.0" />
+                <Button mnemonicParsing="false" text="Добавить" textAlignment="CENTER" textOverrun="CLIP" />
+              </children>
+            </VBox>
+            <Separator focusTraversable="true" prefWidth="196.0" />
+            <ListView blendMode="HARD_LIGHT" depthTest="INHERIT" minHeight="-1.0" minWidth="-1.0" mouseTransparent="true" prefHeight="325.0" prefWidth="196.0" />
+          </children>
+        </VBox>
+      </children>
+    </AnchorPane>
+  </children>
+</AnchorPane>

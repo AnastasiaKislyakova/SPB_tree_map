@@ -8,7 +8,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.TreeMarker;
 
@@ -31,13 +33,19 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("file:src/leaf.png"));
        // primaryStage.setResizable(true);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainWindow.fxml"));
-        BorderPane root = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainStage.fxml"));
+        //BorderPane root = loader.load();
+        AnchorPane root = loader.load();
 
         mapCreator mapController = new mapCreator();
         GoogleMapView m = mapController.getMapView();
-        m.setMaxSize(800, 400);
-        root.setCenter(m);
+
+        mainStageController controller = loader.getController();
+        controller.setMap(m);
+
+//        root.getChildren().add(m);
+//        m.setMaxSize(800, 400);
+//        root.setCenter(m);
 
 //        final ui.MainController controller = loader.getController();
 //        controller.ActivateFilterPanel();
