@@ -2,26 +2,29 @@ package ui;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import javafx.animation.TranslateTransition;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class mainStageController implements Initializable{
+public class mainStageController implements Initializable {
 
     private Stage primaryStage;
 
@@ -91,16 +94,17 @@ public class mainStageController implements Initializable{
 
     @FXML
     public void addNewQuery(ActionEvent actionEvent) {
+
         if (!pickedSpecies.getText().isEmpty()){
             Query q = new Query(pickedSpecies.getText(), pickedColor);
             queryList.getItems().add(q);
         }
     }
 
+
     public void openWindow(ActionEvent actionEvent) {
 
         try {
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("recognizingSystem.fxml"));
             Stage secondStage = new Stage();
             AnchorPane root = loader.load();
@@ -113,4 +117,6 @@ public class mainStageController implements Initializable{
         }
 
     }
+
+
 }

@@ -19,15 +19,23 @@ public class Query extends HBox{
     public Query(String species, Color color){
         super(15);
         this.species.setText(species);
+
         this.color.setRadius(7);
         this.color.setFill(color);
         this.color.setStroke(Color.BLACK);
+
         this.visibility.setSelected(true);
-        this.visibility.setDisable(false);
 
         getChildren().addAll(this.species, this.color, visibility);
 
 
     }
 
+    public CheckBox getVisibility() {
+        return visibility;
+    }
+
+    public void setSelected(boolean value) {
+        visibility.setSelected(value);
+    }
 }
