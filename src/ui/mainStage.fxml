@@ -22,19 +22,19 @@
       </items>
     </ToolBar>
     <StackPane fx:id="mainContent" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0" />
-    <AnchorPane fx:id="navList" focusTraversable="true" prefHeight="444.0" prefWidth="180.0" style="-fx-background-color:white" translateX="-180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
+    <AnchorPane fx:id="navList" disable="false" focusTraversable="true" prefHeight="444.0" prefWidth="180.0" style="" translateX="-180.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
       <children>
-        <VBox id="VBox" alignment="CENTER" layoutX="0.0" layoutY="0.0" prefHeight="444.0" prefWidth="180.0" spacing="0.0">
+        <VBox id="VBox" alignment="CENTER" fillWidth="true" layoutX="0.0" layoutY="0.0" prefHeight="444.0" prefWidth="180.0" spacing="0.0">
           <children>
             <VBox id="VBox" alignment="CENTER" spacing="5.0" style="-fx-background-color:white" VBox.vgrow="ALWAYS">
               <children>
-                <TextField alignment="CENTER" focusTraversable="true" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" />
-                <ColorPicker maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" />
-                <Button maxWidth="-Infinity" mnemonicParsing="false" prefWidth="130.0" text="Добавить" textAlignment="CENTER" textOverrun="CLIP" />
+                <TextField fx:id="pickedSpecies" alignment="CENTER" focusTraversable="true" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" />
+                <ColorPicker fx:id="picker" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" />
+                <Button id="addQuery" fx:id="addQueryButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addNewQuery" prefWidth="130.0" text="Добавить" textAlignment="CENTER" textOverrun="CLIP" />
               </children>
             </VBox>
-            <Separator focusTraversable="true" prefWidth="196.0" style="" />
-            <ListView blendMode="HARD_LIGHT" depthTest="INHERIT" minHeight="-1.0" minWidth="-1.0" mouseTransparent="true" prefHeight="325.0" prefWidth="196.0" style="" />
+            <Separator focusTraversable="true" prefWidth="196.0" style="" visible="true" />
+            <ListView fx:id="queryList" blendMode="HARD_LIGHT" depthTest="INHERIT" minHeight="-1.0" minWidth="-1.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="325.0" prefWidth="196.0" style="-fx-background-color:white&#10;" />
           </children>
         </VBox>
       </children>
