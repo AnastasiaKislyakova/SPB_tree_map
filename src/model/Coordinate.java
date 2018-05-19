@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Created by user on 18.05.2018.
+ * Created by user on 19.05.2018.
  */
 public class Coordinate {
     private final double latitude;
@@ -20,9 +20,10 @@ public class Coordinate {
         return longitude;
     }
 
-    private boolean equalsDouble(double a, double b) {
+    boolean equalsDouble(double a, double b) {
         return Math.abs(a - b) < 0.000001;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,6 +48,8 @@ public class Coordinate {
 
     @Override
     public String toString() {
-        return String.format("(%f, %f)", latitude, longitude);
+        return "(" + latitude +
+                ", " + longitude +
+                ')';
     }
 }
