@@ -1,15 +1,17 @@
 package model;
 
+import com.lynden.gmapsfx.javascript.object.LatLong;
+
 /**
  * Created by user on 18.05.2018.
  */
 public class TreeMarker {
     private final int id;
-    private final String species;
+    private final Species species;
     private final Coordinate coordinate;
     private final double trunk; // mm
 
-    public TreeMarker(int id, String species, Coordinate coordinate, double trunk) {
+    public TreeMarker(int id, Species species, Coordinate coordinate, double trunk) {
         this.id = id;
         this.species = species;
         this.coordinate = coordinate;
@@ -20,7 +22,7 @@ public class TreeMarker {
         return id;
     }
 
-    public String getSpecies() {
+    public Species getSpecies() {
         return species;
     }
 
@@ -62,7 +64,7 @@ public class TreeMarker {
         return "TreeMarker{" +
                 "id=" + id +
                 ", species='" + species + '\'' +
-                ", coordinate=" + coordinate +
+                ", coordinate=" + coordinate.toString() +
                 ", trunk=" + trunk +
                 '}';
     }

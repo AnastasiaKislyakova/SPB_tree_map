@@ -1,6 +1,8 @@
 package db;
 
+import com.lynden.gmapsfx.javascript.object.LatLong;
 import model.Coordinate;
+import model.Species;
 import model.TreeMarker;
 
 import java.util.List;
@@ -15,6 +17,6 @@ public interface DBService {
 
     void deleteMarker(long id) throws DBException;
 
-    TreeMarker getMarkerByCoordAndSpecies(Coordinate coordinate, String species) throws DBException;
+    TreeMarker getMarkerByCoordAndSpecies(Coordinate coordinate, Species species) throws DBException;
 
 }
