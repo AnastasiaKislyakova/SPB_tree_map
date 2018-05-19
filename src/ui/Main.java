@@ -7,6 +7,7 @@ import db.DBServiceImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.TreeMarker;
@@ -27,6 +28,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         doSomething();
         primaryStage.setTitle("Карта деревьев");
+        primaryStage.getIcons().add(new Image("file:src/leaf.png"));
+       // primaryStage.setResizable(true);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainWindow.fxml"));
         BorderPane root = loader.load();
@@ -40,6 +43,7 @@ public class Main extends Application {
 //        controller.ActivateFilterPanel();
         primaryStage.setScene(new Scene(root));
         //controller.setStage(primaryStage);
+
 
         primaryStage.show();
     }

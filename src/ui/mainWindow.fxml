@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane id="BorderPane" fx:id="mainPane" maxHeight="-1.0" maxWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.MainController">
+  <bottom>
+    <AnchorPane minHeight="-Infinity" prefHeight="100.0" prefWidth="600.0" styleClass="background" visible="true" BorderPane.alignment="CENTER">
+      <children>
+        <HBox id="HBox" alignment="CENTER" fillHeight="true" spacing="120.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="113.6" AnchorPane.rightAnchor="162.4" AnchorPane.topAnchor="10.0">
+          <children>
+            <VBox id="VBox" alignment="CENTER" fillWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="170.0" spacing="10.0">
+              <children>
+                <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Распознать" textOverrun="CLIP" wrapText="false" />
+                <Button id="filter" fx:id="filterButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showFilterPanel" prefHeight="35.0" prefWidth="160.0" text="Отфильтровать" />
+              </children>
+            </VBox>
+            <VBox id="VBox" alignment="CENTER" spacing="5.0">
+              <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Деревья" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+              </children>
+            </VBox>
+            <VBox id="VBox" alignment="CENTER" spacing="5.0">
+              <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Виды" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+      </children>
+    </AnchorPane>
+  </bottom>
+  <center>
+    <AnchorPane fx:id="map" depthTest="ENABLE" focusTraversable="false" maxHeight="-1.0" maxWidth="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" styleClass="background" visible="true" BorderPane.alignment="TOP_RIGHT">
+      <BorderPane.margin>
+        <Insets />
+      </BorderPane.margin>
+    </AnchorPane>
+  </center>
+  <left>
+    <AnchorPane fx:id="filterPanel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="196.0" styleClass="background" visible="false">
+      <children>
+        <VBox id="VBox" alignment="CENTER" layoutX="23.0" layoutY="47.0" spacing="5.0">
+          <children>
+            <TextField minWidth="-Infinity" prefWidth="150.0" />
+            <ColorPicker minWidth="-Infinity" prefWidth="150.0" />
+            <Button mnemonicParsing="false" text="Добавить" textAlignment="CENTER" textOverrun="CLIP" />
+          </children>
+        </VBox>
+        <Separator focusTraversable="true" prefWidth="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="169.0" />
+        <ListView blendMode="HARD_LIGHT" depthTest="INHERIT" minHeight="-1.0" minWidth="-1.0" mouseTransparent="true" prefHeight="700.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="182.0" />
+      </children>
+      <stylesheets>
+        <URL value="@../theme.css" />
+      </stylesheets>
+    </AnchorPane>
+  </left>
+  <stylesheets>
+    <URL value="@../theme.css" />
+  </stylesheets>
+</BorderPane>
