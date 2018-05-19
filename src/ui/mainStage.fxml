@@ -13,12 +13,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.mainStageController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.mainStageController">
   <children>
     <ToolBar minHeight="56.0" style="-fx-background-color:white&#10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <Button fx:id="filterButton" mnemonicParsing="false" onAction="#openFilterPanel" text="Отфильтровать" />
-        <Button id="filterButton" mnemonicParsing="false" text="Распознать" />
+        <Button id="filterButton" fx:id="recognizeButton" mnemonicParsing="false" onAction="#openWindow" text="Распознать" />
       </items>
     </ToolBar>
     <StackPane fx:id="mainContent" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0" />
@@ -29,7 +29,7 @@
             <VBox id="VBox" alignment="CENTER" spacing="5.0" style="-fx-background-color:white" VBox.vgrow="ALWAYS">
               <children>
                 <TextField fx:id="pickedSpecies" alignment="CENTER" focusTraversable="true" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" />
-                <ColorPicker fx:id="picker" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" />
+                <ColorPicker fx:id="picker" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" promptText="" />
                 <Button id="addQuery" fx:id="addQueryButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addNewQuery" prefWidth="130.0" text="Добавить" textAlignment="CENTER" textOverrun="CLIP" />
               </children>
             </VBox>

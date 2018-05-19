@@ -42,6 +42,7 @@ public class Main extends Application {
 
         mainStageController controller = loader.getController();
         controller.setMap(m);
+        controller.setPrimaryStage(primaryStage);
 
 //        root.getChildren().add(m);
 //        m.setMaxSize(800, 400);
