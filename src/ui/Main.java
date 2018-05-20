@@ -4,26 +4,27 @@ import com.lynden.gmapsfx.GoogleMapView;
 import db.DBException;
 import db.DBService;
 import db.DBServiceImpl;
+import db.SPBTreeDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import model.TreeMarker;
+import model.Coordinate;
+import model.Species;
+import model.Tree;
 
 import java.util.List;
 
 public class Main extends Application {
 
-    DBService dbService = new DBServiceImpl();
+    SPBTreeDAO treeDAO = new SPBTreeDAO();
 
     // example of work with database
     public void doSomething() throws DBException {
-        List<TreeMarker> markers = dbService.getAllMarkers();
-        markers.forEach(System.out::println);
+        List<Tree> trees = treeDAO.getAllTrees();
+        trees.forEach(System.out::println);
     }
 
     @Override
@@ -37,10 +38,10 @@ public class Main extends Application {
         //BorderPane root = loader.load();
         AnchorPane root = loader.load();
 
-        mapCreator mapController = new mapCreator();
+        MapCreator mapController = new MapCreator();
         GoogleMapView m = mapController.getMapView();
 
-        mainStageController controller = loader.getController();
+        MainStageController controller = loader.getController();
         controller.setMap(m);
         controller.setPrimaryStage(primaryStage);
 

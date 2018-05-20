@@ -1,9 +1,8 @@
 package db;
 
-import com.lynden.gmapsfx.javascript.object.LatLong;
 import model.Coordinate;
 import model.Species;
-import model.TreeMarker;
+import model.Tree;
 
 import java.util.List;
 
@@ -11,12 +10,12 @@ import java.util.List;
  * Created by user on 18.05.2018.
  */
 public interface DBService {
-    List<TreeMarker> getAllMarkers() throws DBException;
+    List<Tree> getAllMarkers() throws DBException;
 
-    void insertMarker(TreeMarker marker) throws DBException;
+    void insertMarker(Tree marker) throws DBException;
 
     void deleteMarker(long id) throws DBException;
 
-    TreeMarker getMarkerByCoordAndSpecies(Coordinate coordinate, Species species) throws DBException;
+    Tree getMarkerByCoordAndSpecies(Coordinate coordinate, Species species) throws DBException;
 
 }

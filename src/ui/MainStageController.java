@@ -24,7 +24,7 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class mainStageController implements Initializable {
+public class MainStageController implements Initializable {
 
     private Stage primaryStage;
 
