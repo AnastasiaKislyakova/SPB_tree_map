@@ -1,5 +1,7 @@
 package ui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 import javax.swing.*;
@@ -28,4 +30,6 @@ public class util {
                 add(new Image(iconPath + MarkerStyle.yellow + ".png"));
             }});
 
+    public static final ObservableList<String> species =
+            FXCollections.observableArrayList("Берёза", "Дуб", "Каштан");
 }

@@ -48,7 +48,7 @@
         </HBox>
       </children>
     </AnchorPane>
-    <StackPane fx:id="mainContent" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.5" AnchorPane.rightAnchor="-0.5" AnchorPane.topAnchor="56.0" />
+    <StackPane fx:id="mainContent" prefHeight="444.0000999999975" prefWidth="700.0" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.5" AnchorPane.rightAnchor="-0.5" AnchorPane.topAnchor="56.0" />
     <AnchorPane fx:id="navList" disable="false" focusTraversable="false" prefHeight="444.0" prefWidth="180.0" style="" translateX="-180.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
       <children>
         <VBox id="VBox" alignment="CENTER" disable="false" fillWidth="true" layoutX="0.0" prefHeight="444.0" prefWidth="180.0" spacing="0.0" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -64,7 +64,7 @@
                     </FXCollections>
                   </items>
                 </ChoiceBox>
-                <VBox id="VBox" fx:id="markersBox" alignment="CENTER" onMouseEntered="#listenIcons" onMouseMoved="#listenIcons" onMousePressed="#listenIcons" spacing="5.0">
+                <VBox id="VBox" fx:id="markersBox" alignment="CENTER" maxWidth="-Infinity" onMouseEntered="#listenIcons" onMouseMoved="#listenIcons" onMousePressed="#listenIcons" prefWidth="130.0" spacing="5.0">
                   <children>
                     <HBox id="HBox" alignment="CENTER" spacing="5.0">
                       <children>
@@ -97,17 +97,17 @@
                             <Image url="http://maps.google.com/mapfiles/ms/icons/pink.png" />
                           </image>
                         </ImageView>
-                        <ImageView fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="orange" fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
                           <image>
                             <Image url="http://maps.google.com/mapfiles/ms/icons/orange.png" />
                           </image>
                         </ImageView>
-                        <ImageView fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="lightBlue" fx:id="lightblue" fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
                           <image>
                             <Image url="http://maps.google.com/mapfiles/ms/icons/lightblue.png" />
                           </image>
                         </ImageView>
-                        <ImageView fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="green" fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
                           <image>
                             <Image url="http://maps.google.com/mapfiles/ms/icons/green.png" />
                           </image>
