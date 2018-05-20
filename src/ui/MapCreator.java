@@ -6,6 +6,10 @@ import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
 import netscape.javascript.JSObject;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9fd26e372b366c882a2cfcdeb169fe2746ab626f
 public class MapCreator implements MapComponentInitializedListener {
     private GoogleMapView mapView;
     public GoogleMap map;

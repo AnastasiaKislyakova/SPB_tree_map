@@ -48,6 +48,18 @@ public class MainStageController implements Initializable {
 
     @FXML
     private ImageView yellow;
+    @FXML
+    private ImageView blue;
+    @FXML
+    private ImageView purple;
+    @FXML
+    private ImageView pink;
+    @FXML
+    private ImageView orange;
+    @FXML
+    private ImageView lightblue;
+    @FXML
+    private ImageView green;
 
     @FXML
     private StackPane mainContent;
@@ -90,7 +102,6 @@ public class MainStageController implements Initializable {
         openNav=new TranslateTransition(new Duration(350), navList);
         openNav.setToX(0);
         closeNav=new TranslateTransition(new Duration(350), navList);
-
 
     }
 
@@ -166,6 +177,90 @@ public class MainStageController implements Initializable {
 
                 } else {
                     yellow.setBlendMode(null);
+                }
+
+                event.consume();
+            }
+        });
+
+        blue.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (blue.getBlendMode() ==  null){
+                    setSelected(blue.getImage(), "blue");
+
+                } else {
+                    blue.setBlendMode(null);
+                }
+
+                event.consume();
+            }
+        });
+
+        purple.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (purple.getBlendMode() ==  null){
+                    setSelected(purple.getImage(), "purple");
+
+                } else {
+                    purple.setBlendMode(null);
+                }
+
+                event.consume();
+            }
+        });
+
+        pink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (pink.getBlendMode() ==  null){
+                    setSelected(pink.getImage(), "pink");
+
+                } else {
+                    pink.setBlendMode(null);
+                }
+
+                event.consume();
+            }
+        });
+
+        orange.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (orange.getBlendMode() ==  null){
+                    setSelected(orange.getImage(), "orange");
+
+                } else {
+                    orange.setBlendMode(null);
+                }
+
+                event.consume();
+            }
+        });
+
+        lightblue.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (lightblue.getBlendMode() ==  null){
+                    setSelected(lightblue.getImage(), "lightblue");
+
+                } else {
+                    lightblue.setBlendMode(null);
+                }
+
+                event.consume();
+            }
+        });
+
+        green.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (green.getBlendMode() ==  null){
+                    setSelected(green.getImage(), "green");
+
+                } else {
+                    green.setBlendMode(null);
                 }
 
                 event.consume();
