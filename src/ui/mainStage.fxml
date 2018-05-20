@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
@@ -9,6 +10,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
@@ -17,7 +19,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.MainStageController">
   <children>
-    <AnchorPane minHeight="56.0" prefHeight="-1.0" prefWidth="700.0" snapToPixel="true" style="-fx-background-color:white&#10;&#10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <AnchorPane minHeight="56.0" prefHeight="-1.0" prefWidth="700.0" snapToPixel="true" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
         <HBox id="HBox" alignment="CENTER" fillHeight="true" minHeight="56.0" padding="$x1" prefHeight="56.0" prefWidth="700.0" spacing="60.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
@@ -49,17 +51,76 @@
     <StackPane fx:id="mainContent" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.5" AnchorPane.rightAnchor="-0.5" AnchorPane.topAnchor="56.0" />
     <AnchorPane fx:id="navList" disable="false" focusTraversable="false" prefHeight="444.0" prefWidth="180.0" style="" translateX="-180.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
       <children>
-        <VBox id="VBox" alignment="CENTER" fillWidth="true" layoutX="0.0" prefHeight="444.0" prefWidth="180.0" spacing="0.0" style="-fx-background-color:white&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox id="VBox" alignment="CENTER" disable="false" fillWidth="true" layoutX="0.0" prefHeight="444.0" prefWidth="180.0" spacing="0.0" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-            <VBox id="VBox" alignment="CENTER" spacing="5.0" style="-fx-background-color:white" VBox.vgrow="SOMETIMES">
+            <VBox id="VBox" alignment="CENTER" disable="false" prefHeight="144.0" prefWidth="180.0" spacing="5.0" style="-fx-background-color:#bdf0bf" VBox.vgrow="SOMETIMES">
               <children>
-                <TextField fx:id="pickedSpecies" alignment="CENTER" focusTraversable="true" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" />
-                <ColorPicker fx:id="picker" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" promptText="" />
+                <ChoiceBox fx:id="choiceSpesies" prefWidth="130.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="Берёза" />
+                      <String fx:value="Тополь" />
+                      <String fx:value="Каштан" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <VBox id="VBox" fx:id="markersBox" alignment="CENTER" onMouseEntered="#listenIcons" onMouseMoved="#listenIcons" onMousePressed="#listenIcons" spacing="5.0">
+                  <children>
+                    <HBox id="HBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <ImageView fx:id="yellow" fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="http://maps.google.com/mapfiles/ms/icons/yellow.png" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="blue" fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="http://maps.google.com/mapfiles/ms/icons/blue.png" />
+                          </image>
+                        </ImageView>
+                        <ImageView id="lightBlue" fx:id="purple" fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="http://maps.google.com/mapfiles/ms/icons/purple.png" backgroundLoading="false" />
+                          </image>
+                        </ImageView>
+                        <ImageView fx:id="red" fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true" smooth="false">
+                          <image>
+                            <Image url="http://maps.google.com/mapfiles/ms/icons/red.png" />
+                          </image>
+                        </ImageView>
+                      </children>
+                    </HBox>
+                    <HBox id="HBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <ImageView fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="http://maps.google.com/mapfiles/ms/icons/pink.png" />
+                          </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="http://maps.google.com/mapfiles/ms/icons/orange.png" />
+                          </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="http://maps.google.com/mapfiles/ms/icons/lightblue.png" />
+                          </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                            <Image url="http://maps.google.com/mapfiles/ms/icons/green.png" />
+                          </image>
+                        </ImageView>
+                      </children>
+                    </HBox>
+                  </children>
+                </VBox>
                 <Button id="addQuery" fx:id="addQueryButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addNewQuery" prefWidth="130.0" text="Добавить" textAlignment="CENTER" textOverrun="CLIP" />
               </children>
             </VBox>
-            <Separator focusTraversable="true" prefWidth="196.0" style="" visible="true" VBox.vgrow="NEVER" />
-            <ListView fx:id="queryList" blendMode="HARD_LIGHT" depthTest="INHERIT" editable="true" minHeight="-1.0" minWidth="-1.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="325.0" prefWidth="196.0" style="-fx-background-color:white&#10;" VBox.vgrow="NEVER" />
+            <Separator disable="false" focusTraversable="true" prefWidth="180.0" style="" visible="true" VBox.vgrow="NEVER" />
+            <ListView fx:id="queryList" cache="false" cacheHint="DEFAULT" depthTest="DISABLE" disable="false" editable="false" focusTraversable="true" minHeight="-1.0" minWidth="-1.0" mouseTransparent="false" opacity="1.0" orientation="VERTICAL" pickOnBounds="true" prefHeight="300.0" prefWidth="180.0" style="-fx-background-color: #bdf0bf;" VBox.vgrow="NEVER" />
           </children>
         </VBox>
       </children>
