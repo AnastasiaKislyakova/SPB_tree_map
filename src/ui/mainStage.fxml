@@ -53,7 +53,7 @@
       <children>
         <VBox id="VBox" alignment="CENTER" disable="false" fillWidth="true" layoutX="0.0" prefHeight="444.0" prefWidth="180.0" spacing="0.0" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-            <VBox id="VBox" alignment="CENTER" disable="false" prefHeight="144.0" prefWidth="180.0" spacing="5.0" style="-fx-background-color:#bdf0bf" VBox.vgrow="SOMETIMES">
+            <VBox id="VBox" alignment="CENTER" disable="false" prefHeight="144.0" prefWidth="180.0" spacing="5.0" style="-fx-background-color:#bdf0bf" VBox.vgrow="NEVER">
               <children>
                 <ChoiceBox fx:id="choiceSpesies" prefWidth="130.0">
                   <items>
@@ -92,7 +92,7 @@
                     </HBox>
                     <HBox id="HBox" alignment="CENTER" spacing="5.0">
                       <children>
-                        <ImageView fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="purple" fx:id="pink" fitHeight="23.94140625" fitWidth="31.921875" pickOnBounds="true" preserveRatio="true">
                           <image>
                             <Image url="http://maps.google.com/mapfiles/ms/icons/pink.png" />
                           </image>
@@ -118,9 +118,22 @@
                 </VBox>
                 <Button id="addQuery" fx:id="addQueryButton" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addNewQuery" prefWidth="130.0" text="Добавить" textAlignment="CENTER" textOverrun="CLIP" />
               </children>
+              <VBox.margin>
+                <Insets fx:id="x1" />
+              </VBox.margin>
             </VBox>
             <Separator disable="false" focusTraversable="true" prefWidth="180.0" style="" visible="true" VBox.vgrow="NEVER" />
             <ListView fx:id="queryList" cache="false" cacheHint="DEFAULT" depthTest="DISABLE" disable="false" editable="false" focusTraversable="true" minHeight="-1.0" minWidth="-1.0" mouseTransparent="false" opacity="1.0" orientation="VERTICAL" pickOnBounds="true" prefHeight="300.0" prefWidth="180.0" style="-fx-background-color: #bdf0bf;" VBox.vgrow="NEVER" />
+          </children>
+        </VBox>
+      </children>
+    </AnchorPane>
+    <AnchorPane layoutX="500.0" layoutY="300.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.bottomAnchor="0.0">
+      <children>
+        <VBox id="VBox" alignment="CENTER" layoutX="1.0" layoutY="1.0" spacing="5.0">
+          <children>
+            <Label text="Label" />
+            <ImageView fitHeight="149.0" fitWidth="198.66666666666666" pickOnBounds="true" preserveRatio="true" />
           </children>
         </VBox>
       </children>

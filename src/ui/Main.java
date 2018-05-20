@@ -43,12 +43,7 @@ public class Main extends Application {
         AnchorPane root = loader.load();
 
         MapCreator mapController = new MapCreator();
-//<<<<<<< HEAD
-//        GoogleMapView m = mapController.getMapView();
-//
-//        MainStageController controller = loader.getController();
-//        controller.setMap(m);
-//=======
+
         mapView = mapController.getMapView();
 
         MainStageController controller = loader.getController();

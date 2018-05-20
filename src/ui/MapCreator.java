@@ -47,11 +47,19 @@ public class MapCreator implements MapComponentInitializedListener {
 
         Marker marker = new Marker( markerOptions );
 
+        markerOptions.position( new LatLong(59.8577, 30.33501) )
+                .visible(Boolean.TRUE)
+                .icon(util.iconPath + util.MarkerStyle.blue + ".png")
+                .animation(Animation.NULL);
+
+        Marker marker1 = new Marker(markerOptions);
+
         map.addUIEventHandler(marker,  UIEventType.click, (JSObject event) -> {
             marker.setVisible(false);
         } );
 
         map.addMarker(marker);
+        map.addMarker(marker1);
 
     }
 }
