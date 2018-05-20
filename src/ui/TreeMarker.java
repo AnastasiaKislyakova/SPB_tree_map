@@ -27,13 +27,12 @@ public class TreeMarker extends Marker{
         return tree;
     }
 
+    public void paint(MapCreator mc){
 
-    public void paint(){
+        mc.map.addUIEventHandler(this,  UIEventType.click, (JSObject event) -> {
+            this.setVisible(false);
+        } );
 
-//        map.addUIEventHandler(this,  UIEventType.click, (JSObject event) -> {
-//            this.setVisible(false);
-//        } );
-//
-//        map.addMarker(this);
+        mc.map.addMarker(this);
     }
 }
