@@ -6,13 +6,9 @@ import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
 import netscape.javascript.JSObject;
 
-<<<<<<< HEAD:src/ui/MapCreator.java
-=======
-
->>>>>>> 4381b6094897687ab124536db1f839d3380ce3d8:src/ui/MapCreator.java
 public class MapCreator implements MapComponentInitializedListener {
     private GoogleMapView mapView;
-    private GoogleMap map;
+    public GoogleMap map;
 
     MapCreator() {
         mapView = new GoogleMapView();
