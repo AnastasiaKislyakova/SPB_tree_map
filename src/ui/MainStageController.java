@@ -41,6 +41,9 @@ public class MainStageController implements Initializable {
     private String markerColor;
 
     @FXML
+    private ChoiceBox choiceSpesies;
+
+    @FXML
     private ImageView red;
 
     @FXML
@@ -63,10 +66,6 @@ public class MainStageController implements Initializable {
 
     @FXML
     private ListView<Query> queryList = new ListView<>();
-
-
-    @FXML
-    private TextField pickedSpecies;
 
     @FXML
     private Button recognizeButton;
@@ -115,11 +114,8 @@ public class MainStageController implements Initializable {
 
     @FXML
     public void addNewQuery(ActionEvent actionEvent) {
-
-        if (!pickedSpecies.getText().isEmpty()){
-            Query q = new Query(pickedSpecies.getText(), selectedMarker);
-            queryList.getItems().add(q);
-        }
+        Query q = new Query(choiceSpesies.getValue().toString(), selectedMarker);
+        queryList.getItems().add(q);
     }
 
 

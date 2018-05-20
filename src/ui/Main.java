@@ -29,6 +29,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         doSomething();
+
+
         primaryStage.setTitle("Карта деревьев");
         primaryStage.getIcons().add(new Image("file:src/leaf.png"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainStage.fxml"));
