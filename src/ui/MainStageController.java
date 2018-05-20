@@ -6,7 +6,9 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,19 +16,35 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxListCell;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
 
+import javax.swing.*;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
-public class mainStageController implements Initializable {
+public class MainStageController implements Initializable {
 
     private Stage primaryStage;
+    private Image selectedMarker;
+    private String markerColor;
+
+    @FXML
+    private ImageView red;
+
+    @FXML
+    private ImageView yellow;
 
     @FXML
     private StackPane mainContent;
@@ -38,14 +56,14 @@ public class mainStageController implements Initializable {
     private Button addQueryButton;
 
     @FXML
+    private VBox markersBox;
+
+    @FXML
     private AnchorPane navList;
 
     @FXML
-    private ListView<Query> queryList = new ListView<>(FXCollections.observableArrayList());
+    private ListView<Query> queryList = new ListView<>();
 
-    @FXML
-    private ColorPicker picker;
-    private Color pickedColor;
 
     @FXML
     private TextField pickedSpecies;
@@ -64,7 +82,8 @@ public class mainStageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        queryList.setEditable(true);
+        markersBox.setOnMouseEntered(this::listenIcons);
+
         filterButton.setOnAction(this::openFilterPanel);
         addQueryButton.setOnAction(this::addNewQuery);
         recognizeButton.setOnAction(this::openWindow);
@@ -73,15 +92,17 @@ public class mainStageController implements Initializable {
         openNav.setToX(0);
         closeNav=new TranslateTransition(new Duration(350), navList);
 
-        picker.setOnAction(e -> {pickedColor = picker.getValue();});
 
     }
 
+
     @FXML
     public void openFilterPanel(javafx.event.ActionEvent actionEvent) {
+
         if(navList.getTranslateX()!=0){
             openNav.play();
-        }else{
+            }
+        else {
             closeNav.setToX(-(navList.getWidth()));
             closeNav.play();
         }
@@ -96,7 +117,7 @@ public class mainStageController implements Initializable {
     public void addNewQuery(ActionEvent actionEvent) {
 
         if (!pickedSpecies.getText().isEmpty()){
-            Query q = new Query(pickedSpecies.getText(), pickedColor);
+            Query q = new Query(pickedSpecies.getText(), selectedMarker);
             queryList.getItems().add(q);
         }
     }
@@ -108,7 +129,7 @@ public class mainStageController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("recognizingSystem.fxml"));
             Stage secondStage = new Stage();
             AnchorPane root = loader.load();
-            RecognizingSystemController controller = loader.getController();
+            //RecognizingSystemController controller = loader.getController();
             secondStage.setScene(new Scene(root));
             secondStage.show();
         }
@@ -119,4 +140,41 @@ public class mainStageController implements Initializable {
     }
 
 
+    private void setSelected(Image selected, String color) {
+            this.selectedMarker = selected;
+            markerColor = util.iconPath + color + ".png";
+    }
+
+    public void listenIcons(MouseEvent mouseEvent) {
+
+        red.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if (red.getBlendMode() ==  null){
+                    setSelected(red.getImage(), "red");
+
+                } else {
+                    red.setBlendMode(null);
+                }
+
+                event.consume();
+            }
+        });
+
+        yellow.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (yellow.getBlendMode() ==  null){
+                    setSelected(yellow.getImage(), "yellow");
+
+                } else {
+                    yellow.setBlendMode(null);
+                }
+
+                event.consume();
+            }
+        });
+
+    }
 }

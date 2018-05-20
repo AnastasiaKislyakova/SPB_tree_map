@@ -2,13 +2,16 @@ package ui;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
+import netscape.javascript.JSObject;
 
-public class mapCreator implements MapComponentInitializedListener {
+
+public class MapCreator implements MapComponentInitializedListener {
     private GoogleMapView mapView;
     private GoogleMap map;
 
-    mapCreator() {
+    MapCreator() {
         mapView = new GoogleMapView();
         mapView.addMapInitializedListener(this);
     }
@@ -36,12 +39,18 @@ public class mapCreator implements MapComponentInitializedListener {
         //Add a marker to the map
         MarkerOptions markerOptions = new MarkerOptions();
 
+
         markerOptions.position( new LatLong(59.8977, 30.33501) )
                 .visible(Boolean.TRUE)
-                .title("My Marker")
-                .animation(Animation.DROP);
+                .icon(util.iconPath + util.MarkerStyle.orange + ".png")
+                .animation(Animation.NULL);
 
         Marker marker = new Marker( markerOptions );
+
+        map.addUIEventHandler(marker,  UIEventType.click, (JSObject event) -> {
+            marker.setVisible(false);
+        } );
+
         map.addMarker(marker);
 
     }
