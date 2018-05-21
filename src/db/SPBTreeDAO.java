@@ -26,7 +26,7 @@ import java.util.Locale;
  */
 public class SPBTreeDAO {
 
-    public static final String HOST = "192.168.88.25";
+    public static final String HOST = "localhost";
     public static final String PORT = "3306";
     public static final String DATABASE = "spb_tree";
     public static final String USER = "newuser";

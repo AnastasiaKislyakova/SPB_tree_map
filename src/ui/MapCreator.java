@@ -4,12 +4,10 @@ import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
-<<<<<<< HEAD
 
 import model.Tree;
 import netscape.javascript.JSObject;
-=======
->>>>>>> cb69cb1b0e31cc5e01caeef76094c83f14952292
+
 
 import db.DBException;
 import db.DBService;
@@ -23,9 +21,12 @@ public class MapCreator implements MapComponentInitializedListener {
 
     private GoogleMapView mapView;
     public GoogleMap map;
-    public List<Tree> trees = new ArrayList<Tree>();
-    public List<TreeMarker> markers = new ArrayList<TreeMarker>();
+    private List<Tree> trees = new ArrayList<Tree>();
+    private List<TreeMarker> markers = new ArrayList<TreeMarker>();
 
+    public List<TreeMarker> getMarkers() {
+        return markers;
+    }
 
     MapCreator() {
         mapView = new GoogleMapView();
@@ -52,49 +53,17 @@ public class MapCreator implements MapComponentInitializedListener {
 
         map = mapView.createMap(mapOptions);
 
-<<<<<<< HEAD
         //Add a marker to the map
         MarkerOptions markerOptions = new MarkerOptions();
-//
-//
-//        markerOptions.position( new LatLong(59.8977, 30.33501) )
-//                .visible(Boolean.TRUE)
-//                .icon(util.iconPath + util.MarkerStyle.orange + ".png")
-//                .animation(Animation.NULL);
-//
-//        TreeMarker marker = new TreeMarker(markerOptions, new Tree(0, new Species("Oak", "Дуб"), new Coordinate(59.866465, 30.309587), 500));
-//
-//        marker.paint(this);
+
+        SPBTreeDAO db = new SPBTreeDAO();
+
+    //    DBService  db = new DBServiceImpl();
 
 
-//        markerOptions.position( new LatLong(59.8777, 30.33501) )
-//                .visible(Boolean.TRUE)
-//                .icon(util.iconPath + util.MarkerStyle.blue + ".png")
-//                .animation(Animation.NULL);
-
-//        Marker marker1 = new Marker(markerOptions);
-//
-//        map.addUIEventHandler(marker,  UIEventType.click, (JSObject event) -> {
-//            marker.setVisible(false);
-//        } );
-//
-//        map.addMarker(marker);
-//        map.addMarker(marker1);
-//
-//        InfoWindowOptions options = new InfoWindowOptions()
-//                .position(new LatLong(59.8777, 30.33501))
-//                .content("Test");
-
-        SPBTreeDAO treeDAO = new SPBTreeDAO();
-=======
-        MarkerOptions markerOptions = new MarkerOptions();
-      //  SPBTreeDAO treeDAO = new SPBTreeDAO();
-        DBService  db = new DBServiceImpl();
-
->>>>>>> cb69cb1b0e31cc5e01caeef76094c83f14952292
         try {
           //  trees = treeDAO.getAllTrees();
-            trees = db.getAllMarkers();
+            trees = db.getAllTrees();
             for (Tree t : trees){
                 markerOptions.position( new LatLong(t.getCoordinate().getLatitude(), t.getCoordinate().getLongitude()) )
                         .visible(Boolean.TRUE)
@@ -109,7 +78,7 @@ public class MapCreator implements MapComponentInitializedListener {
                     String html =
                             "<html>" +
                                     "<img src='" +
-                                    "https://pp.userapi.com/c831308/v831308883/106683/KFPlAL069AE.jpg" +
+                                    m.getTree().getLeafPhoto().getPhoto() +
                                     "'width=50 height=auto > ";
 
                     InfoWindowOptions options = new InfoWindowOptions()

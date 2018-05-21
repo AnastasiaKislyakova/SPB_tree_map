@@ -75,7 +75,7 @@ public class MainStageController implements Initializable {
 
     @FXML
     private Button filterButton;
-    
+
     @FXML
     private Button addQueryButton;
 
@@ -95,7 +95,7 @@ public class MainStageController implements Initializable {
     private TranslateTransition openNav;
     private TranslateTransition closeNav;
 
-    public void setPrimaryStage(Stage stage){
+    public void setPrimaryStage(Stage stage) {
         this.primaryStage = stage;
     }
 
@@ -114,9 +114,9 @@ public class MainStageController implements Initializable {
         addQueryButton.setOnAction(this::addNewQuery);
         recognizeButton.setOnAction(this::openWindow);
 
-        openNav=new TranslateTransition(new Duration(350), navList);
+        openNav = new TranslateTransition(new Duration(350), navList);
         openNav.setToX(0);
-        closeNav=new TranslateTransition(new Duration(350), navList);
+        closeNav = new TranslateTransition(new Duration(350), navList);
 
     }
 
@@ -124,10 +124,9 @@ public class MainStageController implements Initializable {
     @FXML
     public void openFilterPanel(javafx.event.ActionEvent actionEvent) {
 
-        if(navList.getTranslateX()!=0){
+        if (navList.getTranslateX() != 0) {
             openNav.play();
-            }
-        else {
+        } else {
             closeNav.setToX(-(navList.getWidth()));
             closeNav.play();
         }
@@ -139,11 +138,20 @@ public class MainStageController implements Initializable {
         this.mainContent.getChildren().add(map.getMapView());
     }
 
-    public void updateVisibility(Boolean isSelected, String species){
-        if (isSelected){
-            System.out.println("set visible = true");
+    public void updateVisibility() {
+        for (TreeMarker tm : map.getMarkers()) {
+            tm.setVisible(true);
         }
-        else System.out.println("set visible = false");
+    }
+
+    public void matches(Boolean isSelected, String species) {
+        for (TreeMarker tm : map.getMarkers()) {
+            if (isSelected && tm.getTree().getSpecies().getNameRus() == species) {
+                tm.setVisible(true);
+            } else {
+                tm.setVisible(false);
+            }
+        }
     }
 
     @FXML
@@ -152,9 +160,12 @@ public class MainStageController implements Initializable {
         queryList.getItems().add(q);
     }
 
-    public void deleteQuery(Query q){
+    public void deleteQuery(Query q) {
         queryList.getItems().remove(q);
-        updateVisibility(false, q.getSpecies());
+        matches(false, q.getSpecies());
+        if (queryList.getItems().isEmpty()) {
+            updateVisibility();
+        }
     }
 
     public void openWindow(ActionEvent actionEvent) {
@@ -166,16 +177,15 @@ public class MainStageController implements Initializable {
             //RecognizingSystemController controller = loader.getController();
             secondStage.setScene(new Scene(root));
             secondStage.show();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
     private void setSelected(Image selected, String color) {
-            this.selectedMarker = selected;
-            markerColor = util.iconPath + color + ".png";
+        this.selectedMarker = selected;
+        markerColor = util.iconPath + color + ".png";
     }
 
     public void listenIcons(MouseEvent mouseEvent) {
@@ -184,7 +194,7 @@ public class MainStageController implements Initializable {
 
             @Override
             public void handle(MouseEvent event) {
-                if (red.getBlendMode() ==  null){
+                if (red.getBlendMode() == null) {
                     setSelected(red.getImage(), "red");
 
                 } else {
@@ -198,7 +208,7 @@ public class MainStageController implements Initializable {
         yellow.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (yellow.getBlendMode() ==  null){
+                if (yellow.getBlendMode() == null) {
                     setSelected(yellow.getImage(), "yellow");
 
                 } else {
@@ -212,7 +222,7 @@ public class MainStageController implements Initializable {
         blue.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (blue.getBlendMode() ==  null){
+                if (blue.getBlendMode() == null) {
                     setSelected(blue.getImage(), "blue");
 
                 } else {
@@ -226,7 +236,7 @@ public class MainStageController implements Initializable {
         purple.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (purple.getBlendMode() ==  null){
+                if (purple.getBlendMode() == null) {
                     setSelected(purple.getImage(), "purple");
 
                 } else {
@@ -240,7 +250,7 @@ public class MainStageController implements Initializable {
         pink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (pink.getBlendMode() ==  null){
+                if (pink.getBlendMode() == null) {
                     setSelected(pink.getImage(), "pink");
 
                 } else {
@@ -254,7 +264,7 @@ public class MainStageController implements Initializable {
         orange.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (orange.getBlendMode() ==  null){
+                if (orange.getBlendMode() == null) {
                     setSelected(orange.getImage(), "orange");
 
                 } else {
@@ -268,7 +278,7 @@ public class MainStageController implements Initializable {
         lightblue.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (lightblue.getBlendMode() ==  null){
+                if (lightblue.getBlendMode() == null) {
                     setSelected(lightblue.getImage(), "lightblue");
 
                 } else {
@@ -282,7 +292,7 @@ public class MainStageController implements Initializable {
         green.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (green.getBlendMode() ==  null){
+                if (green.getBlendMode() == null) {
                     setSelected(green.getImage(), "green");
 
                 } else {
@@ -294,7 +304,6 @@ public class MainStageController implements Initializable {
         });
 
     }
-
 
 
 }

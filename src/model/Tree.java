@@ -18,6 +18,10 @@ public class Tree {
         this.leafPhoto = leafPhoto;
     }
 
+    public LeafPhoto getLeafPhoto() {
+        return leafPhoto;
+    }
+
     public int getId() {
         return id;
     }

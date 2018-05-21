@@ -41,7 +41,7 @@ public class Query extends HBox {
         visibility.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                controller.updateVisibility(visibility.isSelected(),  species.toString());
+                controller.matches(visibility.isSelected(),  species.toString());
             }
         });
 

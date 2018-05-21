@@ -26,10 +26,6 @@ import static javax.swing.text.html.HTML.Tag.HEAD;
 
 public class Main extends Application {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> cb69cb1b0e31cc5e01caeef76094c83f14952292
 //    SPBTreeDAO treeDAO = new SPBTreeDAO();
 
     DBService db = new DBServiceImpl();
@@ -37,10 +33,6 @@ public class Main extends Application {
 
     GoogleMapView mapView;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> cb69cb1b0e31cc5e01caeef76094c83f14952292
     // example of work with database
     public void doSomething() throws DBException {
      //   List<Tree> trees = treeDAO.getAllTrees();
@@ -63,12 +55,9 @@ public class Main extends Application {
         AnchorPane root = loader.load();
 
         MapCreator mapController = new MapCreator();
-<<<<<<< HEAD
+
 
         mapView = mapController.getMapView();
-
-=======
->>>>>>> cb69cb1b0e31cc5e01caeef76094c83f14952292
 
         MainStageController controller = loader.getController();
         controller.setMap(mapController);
