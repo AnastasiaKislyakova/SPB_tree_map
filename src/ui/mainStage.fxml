@@ -29,19 +29,27 @@
                 <Button id="filterButton" fx:id="recognizeButton" mnemonicParsing="false" onAction="#openWindow" text="Распознать" />
               </children>
             </HBox>
-            <VBox id="VBox" alignment="CENTER" spacing="10.0" HBox.hgrow="NEVER">
+            <VBox id="VBox" alignment="CENTER" spacing="5.0" HBox.hgrow="NEVER">
               <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Деревья" />
-                <Label fx:id="treeAmount" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Деревья">
+                  <VBox.margin>
+                    <Insets top="2.0" fx:id="x2" />
+                  </VBox.margin>
+                </Text>
+                <Button fx:id="treesAmount" graphicTextGap="0.0" mnemonicParsing="false" mouseTransparent="true" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color:#bdf0bf&#10;" text="" underline="false">
+                  <VBox.margin>
+                    <Insets bottom="5.0" fx:id="x3" />
+                  </VBox.margin>
+                </Button>
               </children>
               <padding>
                 <Insets fx:id="x1" />
               </padding>
             </VBox>
-            <VBox id="VBox" alignment="CENTER" padding="$x1" spacing="10.0" HBox.hgrow="NEVER">
+            <VBox id="VBox" alignment="CENTER" padding="$x1" spacing="5.0" HBox.hgrow="NEVER">
               <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Виды" />
-                <Label fx:id="speciesAmount"  />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Виды" VBox.margin="$x2" />
+                <Button fx:id="speciesAmount" mnemonicParsing="false" mouseTransparent="true" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color:#bdf0bf&#10;" text="" VBox.margin="$x3" />
               </children>
             </VBox>
           </children>
