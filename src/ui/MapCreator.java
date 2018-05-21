@@ -4,16 +4,20 @@ import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
+<<<<<<< HEAD
 
 import model.Tree;
 import netscape.javascript.JSObject;
+=======
+>>>>>>> cb69cb1b0e31cc5e01caeef76094c83f14952292
 
 import db.DBException;
+import db.DBService;
+import db.DBServiceImpl;
 import db.SPBTreeDAO;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class MapCreator implements MapComponentInitializedListener {
 
@@ -48,6 +52,7 @@ public class MapCreator implements MapComponentInitializedListener {
 
         map = mapView.createMap(mapOptions);
 
+<<<<<<< HEAD
         //Add a marker to the map
         MarkerOptions markerOptions = new MarkerOptions();
 //
@@ -81,8 +86,15 @@ public class MapCreator implements MapComponentInitializedListener {
 //                .content("Test");
 
         SPBTreeDAO treeDAO = new SPBTreeDAO();
+=======
+        MarkerOptions markerOptions = new MarkerOptions();
+      //  SPBTreeDAO treeDAO = new SPBTreeDAO();
+        DBService  db = new DBServiceImpl();
+
+>>>>>>> cb69cb1b0e31cc5e01caeef76094c83f14952292
         try {
-            trees = treeDAO.getAllTrees();
+          //  trees = treeDAO.getAllTrees();
+            trees = db.getAllMarkers();
             for (Tree t : trees){
                 markerOptions.position( new LatLong(t.getCoordinate().getLatitude(), t.getCoordinate().getLongitude()) )
                         .visible(Boolean.TRUE)
@@ -93,7 +105,13 @@ public class MapCreator implements MapComponentInitializedListener {
                 TreeMarker m = new TreeMarker( markerOptions, t );
 
                 map.addUIEventHandler(m,  UIEventType.click, (JSObject event) -> {
-                    m.setVisible(false);
+
+                    InfoWindowOptions options = new InfoWindowOptions()
+                            .position( new LatLong(m.getTree().getCoordinate().getLatitude(), m.getTree().getCoordinate().getLongitude()))
+                            .content("Диаметр: " + m.getTree().getTrunk() + "\n"
+                            );
+                    InfoWindow window = new InfoWindow(options);
+                    window.open(map, m);
                 } );
 
                 map.addMarker(m);
@@ -107,3 +125,4 @@ public class MapCreator implements MapComponentInitializedListener {
 
     }
 }
+

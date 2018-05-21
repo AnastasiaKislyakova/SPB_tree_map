@@ -34,8 +34,7 @@ import javafx.util.Duration;
 
 import javax.swing.*;
 import java.net.URL;
-import java.util.Observable;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainStageController implements Initializable {
 
@@ -98,7 +97,7 @@ public class MainStageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         markersBox.setOnMouseEntered(this::listenIcons);
-        queryList.setOnMouseMoved(this::updateVisibility);
+        queryList.setOnMouseMoved(Event::consume);
 
         filterButton.setOnAction(this::openFilterPanel);
         addQueryButton.setOnAction(this::addNewQuery);
@@ -129,13 +128,23 @@ public class MainStageController implements Initializable {
         this.mainContent.getChildren().add(map.getMapView());
     }
 
-    @FXML
-    public void addNewQuery(ActionEvent actionEvent) {
-        Query q = new Query(choiceSpesies.getValue().toString(), selectedMarker);
-        queryList.getItems().add(q);
-
+    public void updateVisibility(Boolean isSelected, String species){
+        if (isSelected){
+            System.out.println("set visible = true");
+        }
+        else System.out.println("set visible = false");
     }
 
+    @FXML
+    public void addNewQuery(ActionEvent actionEvent) {
+        Query q = new Query(choiceSpesies.getValue().toString(), selectedMarker, this);
+        queryList.getItems().add(q);
+    }
+
+    public void deleteQuery(Query q){
+        queryList.getItems().remove(q);
+        updateVisibility(false, q.getSpecies());
+    }
 
     public void openWindow(ActionEvent actionEvent) {
 
@@ -276,17 +285,6 @@ public class MainStageController implements Initializable {
     }
 
 
-    public void updateVisibility(MouseEvent mouseEvent) {
-        System.out.println("list viewwwww");
-        Query q =  queryList.getSelectionModel().getSelectedItem();
-        CheckBox c = q.getVisibility();
 
-//        if (!c.isSelected()) {
-//            for (Node m : map.getChildren()){
-//                if (m instanceof Marker)
-//            }
-//        }
-
-
-    }
 }
+

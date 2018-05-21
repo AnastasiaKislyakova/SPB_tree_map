@@ -24,19 +24,19 @@ public class TreeMarker extends Marker{
 
     public void paint(MapCreator mc){
 
-        mc.map.addUIEventHandler(this,  UIEventType.click, (JSObject event) -> {
+//        mc.addUIEventHandler(this,  UIEventType.click, (JSObject event) -> {
+//
+//            InfoWindowOptions options = new InfoWindowOptions()
+//                    .position( new LatLong(tree.getCoordinate().getLatitude(), tree.getCoordinate().getLongitude()))
+//                    .content("Диаметр: " + tree.getTrunk() + "\n"
+//                    );
+//            InfoWindow window = new InfoWindow(options);
+//            window.open(mc.map, this);
+//
+//
+//        } );
 
-            InfoWindowOptions options = new InfoWindowOptions()
-                    .position( new LatLong(tree.getCoordinate().getLatitude(), tree.getCoordinate().getLongitude()))
-                    .content("Диаметр: " + tree.getTrunk() + "\n"
-                    );
-            InfoWindow window = new InfoWindow(options);
-            window.open(mc.map, this);
-
-
-        } );
-
-        mc.map.addMarker(this);
+//        mc.map.addMarker(this);
     }
 
 }
