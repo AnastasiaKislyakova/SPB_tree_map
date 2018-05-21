@@ -51,7 +51,7 @@
     <StackPane fx:id="mainContent" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="56.0" />
     <AnchorPane fx:id="navList" disable="false" focusTraversable="false" layoutX="1.0" prefHeight="444.0" prefWidth="280.0" style="" translateX="-280.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
       <children>
-        <VBox id="VBox" alignment="CENTER" disable="false" fillWidth="true" prefHeight="444.0" prefWidth="220.0" spacing="0.0" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox id="VBox" alignment="CENTER" disable="false" fillWidth="true" prefHeight="444.0" prefWidth="280.0" spacing="0.0" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
             <VBox id="VBox" alignment="CENTER" disable="false" prefHeight="144.0" prefWidth="180.0" spacing="5.0" style="-fx-background-color:#bdf0bf" VBox.vgrow="NEVER">
               <children>
