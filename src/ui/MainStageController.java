@@ -44,6 +44,7 @@ public class MainStageController implements Initializable {
     private Image selectedMarker;
     private String markerColor;
     private MapCreator map;
+    private ImageView m = new ImageView();
 
     @FXML
     private Label treesAmount = new Label();
@@ -151,6 +152,7 @@ public class MainStageController implements Initializable {
 
     @FXML
     public void addNewQuery(ActionEvent actionEvent) {
+        this.m.setBlendMode(null);
         if (queryList.getItems().isEmpty()){
             updateVisibility(false);
         }
@@ -183,127 +185,92 @@ public class MainStageController implements Initializable {
 
     }
 
-    private void setSelected(Image selected, String color) {
+    private void setSelected(Image selected, String color, ImageView imageView) {
         this.selectedMarker = selected;
         markerColor = util.iconPath + color + ".png";
+        this.m = imageView;
+
     }
 
     public void listenIcons(MouseEvent mouseEvent) {
+
+
 
         red.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent event) {
-                if (red.getBlendMode() == null) {
-                    setSelected(red.getImage(), "red");
-
-                } else {
-                    red.setBlendMode(null);
-                }
-
-                event.consume();
+                m.setBlendMode(null);
+                setSelected(red.getImage(), "red", red);
+                m.setBlendMode(BlendMode.ADD);
             }
         });
 
         yellow.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (yellow.getBlendMode() == null) {
-                    setSelected(yellow.getImage(), "yellow");
-
-                } else {
-                    yellow.setBlendMode(null);
-                }
-
-                event.consume();
+                m.setBlendMode(null);
+                setSelected(yellow.getImage(), "yellow", yellow);
+                m.setBlendMode(BlendMode.ADD);
             }
         });
 
         blue.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (blue.getBlendMode() == null) {
-                    setSelected(blue.getImage(), "blue");
+                m.setBlendMode(null);
+                setSelected(blue.getImage(), "blue", blue);
+                m.setBlendMode(BlendMode.ADD);
 
-                } else {
-                    blue.setBlendMode(null);
-                }
-
-                event.consume();
             }
         });
 
         purple.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (purple.getBlendMode() == null) {
-                    setSelected(purple.getImage(), "purple");
-
-                } else {
-                    purple.setBlendMode(null);
-                }
-
-                event.consume();
+                m.setBlendMode(null);
+                setSelected(purple.getImage(), "purple", purple);
+                m.setBlendMode(BlendMode.ADD);
             }
         });
 
         pink.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (pink.getBlendMode() == null) {
-                    setSelected(pink.getImage(), "pink");
-
-                } else {
-                    pink.setBlendMode(null);
-                }
-
-                event.consume();
+                m.setBlendMode(null);
+                setSelected(pink.getImage(), "pink",pink);
+                m.setBlendMode(BlendMode.ADD);
             }
         });
 
         orange.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (orange.getBlendMode() == null) {
-                    setSelected(orange.getImage(), "orange");
-
-                } else {
-                    orange.setBlendMode(null);
-                }
-
-                event.consume();
+                m.setBlendMode(null);
+                setSelected(orange.getImage(), "orange", orange);
+                m.setBlendMode(BlendMode.ADD);
             }
         });
 
         lightblue.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (lightblue.getBlendMode() == null) {
-                    setSelected(lightblue.getImage(), "lightblue");
-
-                } else {
-                    lightblue.setBlendMode(null);
-                }
-
-                event.consume();
+                m.setBlendMode(null);
+                setSelected(lightblue.getImage(), "lightblue", lightblue);
+                m.setBlendMode(BlendMode.ADD);
             }
         });
 
         green.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (green.getBlendMode() == null) {
-                    setSelected(green.getImage(), "green");
-
-                } else {
-                    green.setBlendMode(null);
-                }
-
-                event.consume();
+                m.setBlendMode(null);
+                setSelected(green.getImage(), "green", green);;
+                m.setBlendMode(BlendMode.ADD);
             }
         });
 
-    }
+}
 
 
 }
