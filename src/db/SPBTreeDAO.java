@@ -1,11 +1,16 @@
 package db;
 
+import com.lynden.gmapsfx.javascript.object.Animation;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import com.mysql.jdbc.Driver;
 import db.executor.Executor;
 import db.executor.ResultHandler;
 import model.Coordinate;
 import model.Species;
 import model.Tree;
+import ui.TreeMarker;
+import ui.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,6 +34,7 @@ public class SPBTreeDAO {
 
     private Connection connection;
     private Executor executor;
+
 
     public SPBTreeDAO() {
         this.connection = getMysqlConnection();
@@ -114,18 +120,23 @@ public class SPBTreeDAO {
             return executor.execQuery("select tree.id, species.nameLat, species.nameRus, coordinate.latitude, " +
                     "coordinate.longitude, tree.trunk from tree inner join species on species.id = tree.speciesID " +
                     "inner join coordinate on coordinate.id = tree.coordinateID", new ResultHandler<List<Tree>>() {
-                List<Tree> trees = new ArrayList<Tree>();
+
+                List<Tree> trees = new ArrayList<>();
 
                 @Override
                 public List<Tree> handle(ResultSet resultSet) throws SQLException {
                     if (!resultSet.next()){
                         return null;
                     }
+
                     do {
-                        trees.add(new Tree(resultSet.getInt(1),
-                                new Species (resultSet.getString(2), resultSet.getString(3)),
-                                new Coordinate(resultSet.getDouble(4), resultSet.getDouble(5)),
-                                resultSet.getFloat(6)));
+                        int id = resultSet.getInt(1);
+                        double latitude = resultSet.getDouble(4);
+                        double longitude = resultSet.getDouble(5);
+                        Species species = new Species (resultSet.getString(2), resultSet.getString(3));
+                        Coordinate coordinate = new Coordinate(latitude, longitude);
+                        float trunk = resultSet.getFloat(6);
+                        trees.add(new Tree(id, species, coordinate, trunk));
                     } while (resultSet.next());
                     return trees;
                 }

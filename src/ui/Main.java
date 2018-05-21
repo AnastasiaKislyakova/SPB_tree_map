@@ -16,18 +16,19 @@ import model.Coordinate;
 import model.Species;
 import model.Tree;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static javax.swing.text.html.HTML.Tag.HEAD;
 
 public class Main extends Application {
 
-    SPBTreeDAO treeDAO = new SPBTreeDAO();
+
     DBService db = new DBServiceImpl();
+    //List<TreeMarker> markers = new ArrayList<>();
 
     GoogleMapView mapView;
 
-<<<<<<< HEAD
-
-=======
     // example of work with database
     public void doSomething() throws DBException {
      //   List<Tree> trees = treeDAO.getAllTrees();
@@ -35,12 +36,11 @@ public class Main extends Application {
         List<Tree> trees = db.getAllMarkers();
         trees.forEach(System.out::println);
     }
->>>>>>> 9fd26e372b366c882a2cfcdeb169fe2746ab626f
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        List<Tree> trees = treeDAO.getAllTrees();
 
         primaryStage.setTitle("Карта деревьев");
         primaryStage.getIcons().add(new Image("file:src/leaf.png"));
@@ -48,20 +48,6 @@ public class Main extends Application {
         AnchorPane root = loader.load();
 
         MapCreator mapController = new MapCreator();
-<<<<<<< HEAD
-
-       // GoogleMapView m = mapController.getMapView();
-
-       // MainStageController controller = loader.getController();
-       // controller.setMap(m);
-=======
-//<<<<<<< HEAD
-//        GoogleMapView m = mapController.getMapView();
-//
-//        MainStageController controller = loader.getController();
-//        controller.setMap(m);
-//=======
->>>>>>> 9fd26e372b366c882a2cfcdeb169fe2746ab626f
         mapView = mapController.getMapView();
 
         MainStageController controller = loader.getController();
@@ -71,6 +57,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
+
     }
 
 
@@ -78,8 +65,10 @@ public class Main extends Application {
         launch(args);
     }
 
-    private void createMarkers(){
-
+    private void createMarkers(MapCreator mapController){
+//        for (TreeMarker tm : markers){
+//            tm.paint(mapController);
+//        }
     }
 
 

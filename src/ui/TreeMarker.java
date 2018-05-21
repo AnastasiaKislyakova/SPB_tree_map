@@ -1,10 +1,7 @@
 package ui;
 
 import com.lynden.gmapsfx.javascript.event.UIEventType;
-import com.lynden.gmapsfx.javascript.object.Animation;
-import com.lynden.gmapsfx.javascript.object.LatLong;
-import com.lynden.gmapsfx.javascript.object.Marker;
-import com.lynden.gmapsfx.javascript.object.MarkerOptions;
+import com.lynden.gmapsfx.javascript.object.*;
 import model.Tree;
 import netscape.javascript.JSObject;
 
@@ -17,10 +14,7 @@ public class TreeMarker extends Marker{
     public TreeMarker(MarkerOptions markerOptions, Tree tree) {
         super(markerOptions);
         this.tree = tree;
-        markerOptions.position( new LatLong(tree.getCoordinate().getLatitude(), tree.getCoordinate().getLongitude()) )
-                .visible(Boolean.TRUE)
-                .icon(util.iconPath + util.MarkerStyle.orange + ".png")
-                .animation(Animation.NULL);
+
     }
 
     public Tree getTree() {
