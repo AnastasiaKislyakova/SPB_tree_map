@@ -4,29 +4,19 @@ import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
-<<<<<<< HEAD
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import model.Coordinate;
-import model.Species;
+
 import model.Tree;
 import netscape.javascript.JSObject;
 
-
-public class MapCreator implements MapComponentInitializedListener  {
-=======
-import com.sun.org.apache.xpath.internal.SourceTree;
 import db.DBException;
 import db.SPBTreeDAO;
-import model.Tree;
-import netscape.javascript.JSObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MapCreator implements MapComponentInitializedListener {
->>>>>>> b6af162ff190fac50d38bde236fb2ae9e3b934dc
+
     private GoogleMapView mapView;
     public GoogleMap map;
     public List<Tree> trees = new ArrayList<Tree>();
@@ -59,7 +49,7 @@ public class MapCreator implements MapComponentInitializedListener {
         map = mapView.createMap(mapOptions);
 
         //Add a marker to the map
-//        MarkerOptions markerOptions = new MarkerOptions();
+        MarkerOptions markerOptions = new MarkerOptions();
 //
 //
 //        markerOptions.position( new LatLong(59.8977, 30.33501) )

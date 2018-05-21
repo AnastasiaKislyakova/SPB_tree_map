@@ -7,6 +7,7 @@ import com.mysql.jdbc.Driver;
 import db.executor.Executor;
 import db.executor.ResultHandler;
 import model.Coordinate;
+import model.LeafPhoto;
 import model.Species;
 import model.Tree;
 import ui.TreeMarker;
@@ -57,7 +58,7 @@ public class SPBTreeDAO {
         }
     }
 
-    public int getLastIDTree() throws DBException{
+    public int getLastIDTree() throws DBException {
         try {
             return executor.execQuery("select @id := LAST_INSERT_ID() from tree", resultSet -> {
                 if (!resultSet.next()) {
@@ -85,7 +86,8 @@ public class SPBTreeDAO {
                 double latitude = resultSet.getDouble(4);
                 double longitude = resultSet.getDouble(5);
                 float trunk = resultSet.getFloat(6);
-                return new Tree(treeID, new Species(nameLat, nameRus), new Coordinate(latitude, longitude), trunk);
+
+                return new Tree(treeID, new Species(nameLat, nameRus), new Coordinate(latitude, longitude), trunk, null);
             });
         } catch (SQLException e) {
             throw new DBException(e);
@@ -95,9 +97,9 @@ public class SPBTreeDAO {
     public Tree getTreeByCoordAndSpecies(Coordinate coordinate, Species species) throws DBException {
         try {
             return executor.execQuery(String.format(Locale.US, "select tree.id, species.nameLat, species.nameRus, coordinate.latitude, " +
-                    "coordinate.longitude, tree.trunk from tree inner join species on species.id = tree.speciesID " +
-                    "inner join coordinate on coordinate.id = tree.coordinateID where species.nameLat = '%s' and " +
-                    "coordinate.latitude = %.6f and coordinate.longitude = %.6f", species.getNameLat(), coordinate.getLatitude(),
+                            "coordinate.longitude, tree.trunk from tree inner join species on species.id = tree.speciesID " +
+                            "inner join coordinate on coordinate.id = tree.coordinateID where species.nameLat = '%s' and " +
+                            "coordinate.latitude = %.6f and coordinate.longitude = %.6f", species.getNameLat(), coordinate.getLatitude(),
                     coordinate.getLongitude()), resultSet -> {
                 if (!resultSet.next()) {
                     return null;
@@ -108,7 +110,44 @@ public class SPBTreeDAO {
                 double latitude = resultSet.getDouble(4);
                 double longitude = resultSet.getDouble(5);
                 float trunk = resultSet.getFloat(6);
-                return new Tree(treeID, new Species(nameLat, nameRus), new Coordinate(latitude, longitude), trunk);
+                return new Tree(treeID, new Species(nameLat, nameRus), new Coordinate(latitude, longitude), trunk, null);
+            });
+        } catch (SQLException e) {
+            throw new DBException(e);
+        }
+    }
+
+    public List<LeafPhoto> getALLLeafs() throws DBException {
+        try {
+            return executor.execQuery("select url * from leaf", new ResultHandler<List<LeafPhoto>>() {
+
+                List<LeafPhoto> leafs = new ArrayList<>();
+
+                @Override
+                public List<LeafPhoto> handle(ResultSet resultSet) throws SQLException {
+                    if (!resultSet.next()) {
+                        return null;
+                    }
+
+                    do {
+
+                        leafs.add(new LeafPhoto(resultSet.getString(1)));
+                    } while (resultSet.next());
+                    return leafs;
+                }
+            });
+        } catch (SQLException e) {
+            throw new DBException(e);
+        }
+    }
+
+    public LeafPhoto getLeafPhotoByID(int id) throws DBException {
+        try {
+            return executor.execQuery(String.format(Locale.US, "select url from leaf where id = %d", id), resultSet -> {
+                if (!resultSet.next()) {
+                    return null;
+                }
+                return new LeafPhoto(resultSet.getString(1));
             });
         } catch (SQLException e) {
             throw new DBException(e);
@@ -118,14 +157,14 @@ public class SPBTreeDAO {
     public List<Tree> getAllTrees() throws DBException {
         try {
             return executor.execQuery("select tree.id, species.nameLat, species.nameRus, coordinate.latitude, " +
-                    "coordinate.longitude, tree.trunk from tree inner join species on species.id = tree.speciesID " +
+                    "coordinate.longitude, tree.trunk, species.id from tree inner join species on species.id = tree.speciesID " +
                     "inner join coordinate on coordinate.id = tree.coordinateID", new ResultHandler<List<Tree>>() {
 
                 List<Tree> trees = new ArrayList<>();
 
                 @Override
                 public List<Tree> handle(ResultSet resultSet) throws SQLException {
-                    if (!resultSet.next()){
+                    if (!resultSet.next()) {
                         return null;
                     }
 
@@ -133,10 +172,19 @@ public class SPBTreeDAO {
                         int id = resultSet.getInt(1);
                         double latitude = resultSet.getDouble(4);
                         double longitude = resultSet.getDouble(5);
-                        Species species = new Species (resultSet.getString(2), resultSet.getString(3));
+                        Species species = new Species(resultSet.getString(2), resultSet.getString(3));
                         Coordinate coordinate = new Coordinate(latitude, longitude);
                         float trunk = resultSet.getFloat(6);
-                        trees.add(new Tree(id, species, coordinate, trunk));
+                        int spid = resultSet.getInt(7);
+                        if (spid > 8) {
+                            spid = 8;
+                        }
+                        try {
+                            LeafPhoto leafPhoto = getLeafPhotoByID(spid);
+                            trees.add(new Tree(id, species, coordinate, trunk, leafPhoto));
+                        } catch (DBException e) {
+                            throw new SQLException(e);
+                        }
                     } while (resultSet.next());
                     return trees;
                 }
@@ -149,7 +197,7 @@ public class SPBTreeDAO {
     public void deleteTree(Tree tree) throws DBException {
         try {
             executor.execUpdate(String.format("delete from tree where tree.id = %d", tree.getId()));
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DBException(e);
         }
     }
@@ -166,7 +214,7 @@ public class SPBTreeDAO {
                     "user=" + USER + "&" +    //login
                     "password=" + PASSWORD; //password
 
-            System.out.println("DB url "+ url);
+            System.out.println("DB url " + url);
             return DriverManager.getConnection(url);
         } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();

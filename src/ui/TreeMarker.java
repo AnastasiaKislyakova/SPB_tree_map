@@ -2,6 +2,7 @@ package ui;
 
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
+import model.LeafPhoto;
 import model.Tree;
 import netscape.javascript.JSObject;
 
@@ -15,10 +16,6 @@ public class TreeMarker extends Marker{
     public TreeMarker(MarkerOptions markerOptions, Tree tree) {
         super(markerOptions);
         this.tree = tree;
-<<<<<<< HEAD
-=======
-
->>>>>>> b6af162ff190fac50d38bde236fb2ae9e3b934dc
     }
 
     public Tree getTree() {
