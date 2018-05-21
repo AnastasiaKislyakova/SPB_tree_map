@@ -4,6 +4,7 @@ import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
+<<<<<<< HEAD
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Coordinate;
@@ -13,8 +14,24 @@ import netscape.javascript.JSObject;
 
 
 public class MapCreator implements MapComponentInitializedListener  {
+=======
+import com.sun.org.apache.xpath.internal.SourceTree;
+import db.DBException;
+import db.SPBTreeDAO;
+import model.Tree;
+import netscape.javascript.JSObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class MapCreator implements MapComponentInitializedListener {
+>>>>>>> b6af162ff190fac50d38bde236fb2ae9e3b934dc
     private GoogleMapView mapView;
     public GoogleMap map;
+    public List<Tree> trees = new ArrayList<Tree>();
+    public List<TreeMarker> markers = new ArrayList<TreeMarker>();
+
 
     MapCreator() {
         mapView = new GoogleMapView();
@@ -72,6 +89,31 @@ public class MapCreator implements MapComponentInitializedListener  {
 //        InfoWindowOptions options = new InfoWindowOptions()
 //                .position(new LatLong(59.8777, 30.33501))
 //                .content("Test");
+
+        SPBTreeDAO treeDAO = new SPBTreeDAO();
+        try {
+            trees = treeDAO.getAllTrees();
+            for (Tree t : trees){
+                markerOptions.position( new LatLong(t.getCoordinate().getLatitude(), t.getCoordinate().getLongitude()) )
+                        .visible(Boolean.TRUE)
+                        .icon(util.iconPath + util.MarkerStyle.red
+                                + ".png")
+                        .animation(Animation.NULL);
+
+                TreeMarker m = new TreeMarker( markerOptions, t );
+
+                map.addUIEventHandler(m,  UIEventType.click, (JSObject event) -> {
+                    m.setVisible(false);
+                } );
+
+                map.addMarker(m);
+                markers.add(m);
+            }
+        }
+        catch (DBException e) {
+            System.out.println("DBException from getALLTrees");;
+        }
+
 
     }
 }
