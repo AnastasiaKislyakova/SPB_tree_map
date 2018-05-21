@@ -23,6 +23,11 @@ public class MapCreator implements MapComponentInitializedListener {
     public GoogleMap map;
     private List<Tree> trees = new ArrayList<Tree>();
     private List<TreeMarker> markers = new ArrayList<TreeMarker>();
+    private Statistics statistics = new Statistics(0,0);
+
+    public Statistics getStatistics() {
+        return statistics;
+    }
 
     public List<TreeMarker> getMarkers() {
         return markers;
@@ -92,6 +97,7 @@ public class MapCreator implements MapComponentInitializedListener {
                 map.addMarker(m);
                 markers.add(m);
             }
+            statistics = new Statistics(markers.size(), db.getNumberOfSpecies());
         }
         catch (DBException e) {
             System.out.println("DBException from getALLTrees");;

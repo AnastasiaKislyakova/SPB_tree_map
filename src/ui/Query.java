@@ -1,5 +1,6 @@
 package ui;
 
+import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,21 +15,23 @@ import javafx.scene.text.Text;
 public class Query extends HBox {
 
 
-    private ImageView marker;
+    private ImageView markerIcon;
     private Text species = new Text();
     private CheckBox visibility = new CheckBox();
     private Button delete = new Button("X");
     private MainStageController controller;
     private String selectedSpecies;
+    private String selectedColor;
 
-    public Query(String species, Image image, MainStageController controller) {
+    public Query(String species, Image image, MainStageController controller, String color) {
         super(15);
         this.species.setText(species);
         this.selectedSpecies = species;
-        this.marker = new ImageView(image);
+        this.markerIcon = new ImageView(image);
         this.visibility.setSelected(true);
+        selectedColor = color;
 
-        getChildren().addAll(this.species, marker, visibility, delete);
+        getChildren().addAll(this.species, markerIcon, visibility, delete);
 
         this.controller = controller;
         startListen();
@@ -55,8 +58,10 @@ public class Query extends HBox {
     }
 
     public void filter(Boolean selected) {
+        MarkerOptions options = new MarkerOptions();
         for (TreeMarker tm : controller.getMap().getMarkers()) {
             if (selected && matches(tm.getTree().getSpecies().getNameRus())) {
+                tm.setOptions(options.icon(selectedColor));
                 tm.setVisible(true);
             } else if ((!selected && matches(tm.getTree().getSpecies().getNameRus()))) {
                 tm.setVisible(false);

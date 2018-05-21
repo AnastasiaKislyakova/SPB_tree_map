@@ -32,7 +32,7 @@ public class RecognizingSystemController implements Initializable{
     @FXML
     void load(ActionEvent event) {
         indicator.setVisible(true);
-        this.resultInformation.setText("Нет никакой системы \n для распознавания!\nIT WAS A PRAAAANK");
+        this.resultInformation.setText("Система в стадии разработки");
     }
 
 

@@ -3,6 +3,7 @@ package ui;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.javascript.object.MapShape;
 import com.lynden.gmapsfx.javascript.object.Marker;
+import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -101,11 +102,6 @@ public class MainStageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int sAmount = 7;
-
-        speciesAmount.setText(String.valueOf(sAmount));
-
-        treesAmount.setText(String.valueOf(10));
 
         markersBox.setOnMouseEntered(this::listenIcons);
         queryList.setOnMouseMoved(Event::consume);
@@ -136,6 +132,9 @@ public class MainStageController implements Initializable {
     public void setMap(MapCreator map) {
         this.map = map;
         this.mainContent.getChildren().add(map.getMapView());
+        speciesAmount.setText(String.valueOf(map.getStatistics().getNumberOfSpecies()));
+
+        treesAmount.setText(String.valueOf(map.getStatistics().getNumberOfTrees()));
     }
 
     public MapCreator getMap() {
@@ -143,8 +142,10 @@ public class MainStageController implements Initializable {
     }
 
     public void updateVisibility(boolean state) {
+        MarkerOptions mo = new MarkerOptions();
         for (TreeMarker tm : map.getMarkers()) {
             tm.setVisible(state);
+            tm.setOptions(mo.icon(util.iconPath + util.MarkerStyle.red + ".png"));
         }
     }
 
@@ -153,7 +154,7 @@ public class MainStageController implements Initializable {
         if (queryList.getItems().isEmpty()){
             updateVisibility(false);
         }
-        Query q = new Query(choiceSpesies.getValue().toString(), selectedMarker, this);
+        Query q = new Query(choiceSpesies.getValue().toString(), selectedMarker, this, markerColor);
         queryList.getItems().add(q);
         q.filter(true);
     }
@@ -163,6 +164,7 @@ public class MainStageController implements Initializable {
         q.filter(false);
         if (queryList.getItems().isEmpty()) {
             updateVisibility(true);
+
         }
     }
 

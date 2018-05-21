@@ -72,6 +72,21 @@ public class SPBTreeDAO {
         }
     }
 
+    public int getNumberOfSpecies() throws DBException {
+        try {
+            return executor.execQuery("select count(distinct speciesID) from tree", resultSet -> {
+                if (!resultSet.next()) {
+                    return 0;
+                }
+                return resultSet.getInt(1);
+            });
+
+        } catch (SQLException e) {
+            throw new DBException(e);
+        }
+    }
+
+
     public Tree getTreeById(long id) throws DBException {
         try {
             return executor.execQuery("select tree.id, species.nameLat, species.nameRus, coordinate.latitude, " +
