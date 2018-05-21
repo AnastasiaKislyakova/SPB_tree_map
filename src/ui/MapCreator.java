@@ -7,10 +7,7 @@ import com.lynden.gmapsfx.javascript.object.*;
 
 import model.Tree;
 import netscape.javascript.JSObject;
-<<<<<<< HEAD
 
-=======
->>>>>>> 4a5a9d6170c63803abe41d31a1e5c197818fa992
 
 import db.DBException;
 import db.DBService;
@@ -58,19 +55,10 @@ public class MapCreator implements MapComponentInitializedListener {
 
         //Add a marker to the map
         MarkerOptions markerOptions = new MarkerOptions();
-<<<<<<< HEAD
 
         SPBTreeDAO db = new SPBTreeDAO();
+      //  DBService  db = new DBServiceImpl();
 
-    //    DBService  db = new DBServiceImpl();
-
-=======
-
-
-        //SPBTreeDAO treeDAO = new SPBTreeDAO();
-        DBService  db = new DBServiceImpl();
-
->>>>>>> 4a5a9d6170c63803abe41d31a1e5c197818fa992
 
         try {
           //  trees = treeDAO.getAllTrees();
@@ -89,11 +77,7 @@ public class MapCreator implements MapComponentInitializedListener {
                     String html =
                             "<html>" +
                                     "<img src='" +
-<<<<<<< HEAD
                                     m.getTree().getLeafPhoto().getPhoto() +
-=======
-                                    //m.getTree().get +
->>>>>>> 4a5a9d6170c63803abe41d31a1e5c197818fa992
                                     "'width=50 height=auto > ";
 
                     InfoWindowOptions options = new InfoWindowOptions()

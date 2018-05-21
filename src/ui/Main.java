@@ -25,11 +25,9 @@ import java.util.List;
 import static javax.swing.text.html.HTML.Tag.HEAD;
 
 public class Main extends Application {
-
-<<<<<<< HEAD
+    
 //    SPBTreeDAO treeDAO = new SPBTreeDAO();
-=======
->>>>>>> 4a5a9d6170c63803abe41d31a1e5c197818fa992
+
 
     DBService db = new DBServiceImpl();
 
@@ -52,11 +50,9 @@ public class Main extends Application {
 
         MapCreator mapController = new MapCreator();
 
-<<<<<<< HEAD
 
         mapView = mapController.getMapView();
-=======
->>>>>>> 4a5a9d6170c63803abe41d31a1e5c197818fa992
+
 
         MainStageController controller = loader.getController();
         controller.setMap(mapController);
