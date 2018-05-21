@@ -16,11 +16,11 @@ import db.SPBTreeDAO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapCreator implements MapComponentInitializedListener {
+public class TreeMap implements MapComponentInitializedListener {
 
     private GoogleMapView mapView;
-    public GoogleMap map;
-    private List<Tree> trees = new ArrayList<Tree>();
+    private GoogleMap map;
+
     private List<TreeMarker> markers = new ArrayList<TreeMarker>();
     private MainStageController msc;
     private Statistics statistics = new Statistics(0,0);
@@ -33,7 +33,7 @@ public class MapCreator implements MapComponentInitializedListener {
         return markers;
     }
 
-    MapCreator(MainStageController msc) {
+    TreeMap(MainStageController msc) {
         mapView = new GoogleMapView();
         mapView.addMapInitializedListener(this);
         this.msc = msc;
@@ -66,6 +66,7 @@ public class MapCreator implements MapComponentInitializedListener {
 
 
         try {
+            List<Tree> trees = new ArrayList<Tree>();
             trees = db.getAllTrees();
             for (Tree t : trees){
                 markerOptions.position( new LatLong(t.getCoordinate().getLatitude(), t.getCoordinate().getLongitude()) )

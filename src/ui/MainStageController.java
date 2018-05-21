@@ -28,7 +28,7 @@ public class MainStageController implements Initializable {
     private Stage primaryStage;
     private Image selectedMarker;
     private String markerColor;
-    private MapCreator map;
+    private TreeMap map;
     private ImageView m = new ImageView();
 
     @FXML
@@ -121,13 +121,13 @@ public class MainStageController implements Initializable {
 
     }
 
-    public void setMap(MapCreator map) {
+    public void setMap(TreeMap map) {
         this.map = map;
         this.mainContent.getChildren().add(map.getMapView());
 
     }
 
-    public MapCreator getMap() {
+    public TreeMap getMap() {
         return map;
     }
 

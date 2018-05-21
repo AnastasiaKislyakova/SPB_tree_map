@@ -73,7 +73,4 @@ public class Query extends HBox {
         controller.deleteQuery(this);
     }
 
-    public String getSpecies() {
-        return selectedSpecies;
-    }
 }

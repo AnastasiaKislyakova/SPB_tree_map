@@ -8,8 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.List;
-
 
 public class Main extends Application {
 
@@ -24,7 +22,7 @@ public class Main extends Application {
 
         MainStageController controller = loader.getController();
 
-        MapCreator mapController = new MapCreator(controller);
+        TreeMap mapController = new TreeMap(controller);
 
         controller.setMap(mapController);
 
