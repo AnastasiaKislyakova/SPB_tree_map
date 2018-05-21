@@ -15,10 +15,6 @@ public class TreeMarker extends Marker{
     public TreeMarker(MarkerOptions markerOptions, Tree tree) {
         super(markerOptions);
         this.tree = tree;
-<<<<<<< HEAD
-=======
-
->>>>>>> b6af162ff190fac50d38bde236fb2ae9e3b934dc
     }
 
     public Tree getTree() {
@@ -27,19 +23,19 @@ public class TreeMarker extends Marker{
 
     public void paint(MapCreator mc){
 
-        mc.map.addUIEventHandler(this,  UIEventType.click, (JSObject event) -> {
+//        mc.addUIEventHandler(this,  UIEventType.click, (JSObject event) -> {
+//
+//            InfoWindowOptions options = new InfoWindowOptions()
+//                    .position( new LatLong(tree.getCoordinate().getLatitude(), tree.getCoordinate().getLongitude()))
+//                    .content("Диаметр: " + tree.getTrunk() + "\n"
+//                    );
+//            InfoWindow window = new InfoWindow(options);
+//            window.open(mc.map, this);
+//
+//
+//        } );
 
-            InfoWindowOptions options = new InfoWindowOptions()
-                    .position( new LatLong(tree.getCoordinate().getLatitude(), tree.getCoordinate().getLongitude()))
-                    .content("Диаметр: " + tree.getTrunk() + "\n"
-                    );
-            InfoWindow window = new InfoWindow(options);
-            window.open(mc.map, this);
-
-
-        } );
-
-        mc.map.addMarker(this);
+//        mc.map.addMarker(this);
     }
 
 }

@@ -123,7 +123,7 @@
               </VBox.margin>
             </VBox>
             <Separator disable="false" focusTraversable="true" prefWidth="180.0" style="" visible="true" VBox.vgrow="NEVER" />
-            <ListView fx:id="queryList" cache="false" cacheHint="DEFAULT" depthTest="DISABLE" disable="false" editable="false" focusTraversable="true" minHeight="-1.0" minWidth="-1.0" mouseTransparent="false" onContextMenuRequested="#updateVisibility" opacity="1.0" orientation="VERTICAL" pickOnBounds="true" prefHeight="300.0" prefWidth="180.0" style="-fx-background-color: #bdf0bf;" VBox.vgrow="NEVER" />
+            <ListView fx:id="queryList" cache="false" cacheHint="DEFAULT" depthTest="DISABLE" disable="false" editable="false" focusTraversable="true" minHeight="-1.0" minWidth="-1.0" mouseTransparent="false" opacity="1.0" orientation="VERTICAL" pickOnBounds="true" prefHeight="300.0" prefWidth="180.0" style="-fx-background-color: #bdf0bf;" VBox.vgrow="ALWAYS" />
           </children>
         </VBox>
       </children>
