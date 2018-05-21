@@ -138,33 +138,31 @@ public class MainStageController implements Initializable {
         this.mainContent.getChildren().add(map.getMapView());
     }
 
-    public void updateVisibility() {
-        for (TreeMarker tm : map.getMarkers()) {
-            tm.setVisible(true);
-        }
+    public MapCreator getMap() {
+        return map;
     }
 
-    public void matches(Boolean isSelected, String species) {
+    public void updateVisibility(boolean state) {
         for (TreeMarker tm : map.getMarkers()) {
-            if (isSelected && tm.getTree().getSpecies().getNameRus() == species) {
-                tm.setVisible(true);
-            } else {
-                tm.setVisible(false);
-            }
+            tm.setVisible(state);
         }
     }
 
     @FXML
     public void addNewQuery(ActionEvent actionEvent) {
+        if (queryList.getItems().isEmpty()){
+            updateVisibility(false);
+        }
         Query q = new Query(choiceSpesies.getValue().toString(), selectedMarker, this);
         queryList.getItems().add(q);
+        q.filter(true);
     }
 
     public void deleteQuery(Query q) {
         queryList.getItems().remove(q);
-        matches(false, q.getSpecies());
+        q.filter(false);
         if (queryList.getItems().isEmpty()) {
-            updateVisibility();
+            updateVisibility(true);
         }
     }
 

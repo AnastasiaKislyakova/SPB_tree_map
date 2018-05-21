@@ -1,6 +1,5 @@
 package ui;
 
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -10,10 +9,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-
 import javafx.scene.text.Text;
-
-
 
 public class Query extends HBox {
 
@@ -23,11 +19,12 @@ public class Query extends HBox {
     private CheckBox visibility = new CheckBox();
     private Button delete = new Button("X");
     private MainStageController controller;
+    private String selectedSpecies;
 
-    public Query(String species, Image image, MainStageController controller){
+    public Query(String species, Image image, MainStageController controller) {
         super(15);
         this.species.setText(species);
-
+        this.selectedSpecies = species;
         this.marker = new ImageView(image);
         this.visibility.setSelected(true);
 
@@ -41,23 +38,37 @@ public class Query extends HBox {
         visibility.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                controller.matches(visibility.isSelected(),  species.toString());
+                filter(visibility.isSelected());
             }
         });
 
         delete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                del();
+                terminate();
             }
         });
     }
 
-    private void del() {
+    private boolean matches(String species) {
+        return selectedSpecies.equals(species);
+    }
+
+    public void filter(Boolean selected) {
+        for (TreeMarker tm : controller.getMap().getMarkers()) {
+            if (selected && matches(tm.getTree().getSpecies().getNameRus())) {
+                tm.setVisible(true);
+            } else if ((!selected && matches(tm.getTree().getSpecies().getNameRus()))) {
+                tm.setVisible(false);
+            }
+        }
+    }
+
+    private void terminate() {
         controller.deleteQuery(this);
     }
 
     public String getSpecies() {
-        return species.toString();
+        return selectedSpecies;
     }
 }

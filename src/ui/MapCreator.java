@@ -41,7 +41,7 @@ public class MapCreator implements MapComponentInitializedListener {
     public void mapInitialized() {
         MapOptions mapOptions = new MapOptions();
 
-        mapOptions.center(new LatLong(59.9342, 30.33501))
+        mapOptions.center(new LatLong(59.869754, 30.308350))
                 .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
                 .panControl(true)
@@ -49,7 +49,7 @@ public class MapCreator implements MapComponentInitializedListener {
                 .scaleControl(false)
                 .streetViewControl(false)
                 .zoomControl(false)
-                .zoom(12);
+                .zoom(16);
 
         map = mapView.createMap(mapOptions);
 
