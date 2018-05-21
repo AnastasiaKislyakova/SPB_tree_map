@@ -53,7 +53,7 @@ public class MapCreator implements MapComponentInitializedListener {
         MarkerOptions markerOptions = new MarkerOptions();
 
 
-        SPBTreeDAO treeDAO = new SPBTreeDAO();
+        //SPBTreeDAO treeDAO = new SPBTreeDAO();
         DBService  db = new DBServiceImpl();
 
 
