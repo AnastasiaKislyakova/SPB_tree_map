@@ -143,7 +143,7 @@ public class MainStageController implements Initializable {
 
     public void deleteQuery(Query q){
         queryList.getItems().remove(q);
-        //updateMap
+        updateVisibility(false, q.getSpecies());
     }
 
     public void openWindow(ActionEvent actionEvent) {
