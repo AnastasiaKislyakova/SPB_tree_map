@@ -26,17 +26,17 @@ import static javax.swing.text.html.HTML.Tag.HEAD;
 
 public class Main extends Application {
 
+<<<<<<< HEAD
 //    SPBTreeDAO treeDAO = new SPBTreeDAO();
+=======
+>>>>>>> 4a5a9d6170c63803abe41d31a1e5c197818fa992
 
     DBService db = new DBServiceImpl();
-    //List<TreeMarker> markers = new ArrayList<>();
 
     GoogleMapView mapView;
 
     // example of work with database
     public void doSomething() throws DBException {
-     //   List<Tree> trees = treeDAO.getAllTrees();
-       // trees.forEach(System.out::println);
         List<Tree> trees = db.getAllMarkers();
         trees.forEach(System.out::println);
     }
@@ -45,10 +45,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
-//        List<Tree> trees = treeDAO.getAllTrees();
-
-
         primaryStage.setTitle("Карта деревьев");
         primaryStage.getIcons().add(new Image("file:src/leaf.png"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mainStage.fxml"));
@@ -56,8 +52,11 @@ public class Main extends Application {
 
         MapCreator mapController = new MapCreator();
 
+<<<<<<< HEAD
 
         mapView = mapController.getMapView();
+=======
+>>>>>>> 4a5a9d6170c63803abe41d31a1e5c197818fa992
 
         MainStageController controller = loader.getController();
         controller.setMap(mapController);
@@ -70,16 +69,8 @@ public class Main extends Application {
 
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
-
-    private void createMarkers(MapCreator mapController){
-//        for (TreeMarker tm : markers){
-//            tm.paint(mapController);
-//        }
-    }
-
 
 }

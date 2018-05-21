@@ -48,19 +48,27 @@
         </HBox>
       </children>
     </AnchorPane>
-    <StackPane fx:id="mainContent" prefHeight="444.0000999999975" prefWidth="700.0" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.5" AnchorPane.rightAnchor="-0.5" AnchorPane.topAnchor="56.0" />
-    <AnchorPane fx:id="navList" disable="false" focusTraversable="false" prefHeight="444.0" prefWidth="180.0" style="" translateX="-180.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
+    <StackPane fx:id="mainContent" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color:rgba(0,0,0,0.30)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="56.0" />
+    <AnchorPane fx:id="navList" disable="false" focusTraversable="false" layoutX="1.0" prefHeight="444.0" prefWidth="280.0" style="" translateX="-280.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="56.0">
       <children>
-        <VBox id="VBox" alignment="CENTER" disable="false" fillWidth="true" layoutX="0.0" prefHeight="444.0" prefWidth="180.0" spacing="0.0" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox id="VBox" alignment="CENTER" disable="false" fillWidth="true" prefHeight="444.0" prefWidth="220.0" spacing="0.0" style="-fx-background-color:#bdf0bf&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
             <VBox id="VBox" alignment="CENTER" disable="false" prefHeight="144.0" prefWidth="180.0" spacing="5.0" style="-fx-background-color:#bdf0bf" VBox.vgrow="NEVER">
               <children>
-                <ChoiceBox fx:id="choiceSpesies" prefWidth="130.0">
+                <ChoiceBox fx:id="choiceSpesies" prefWidth="180.0">
                   <items>
                     <FXCollections fx:factory="observableArrayList">
-                      <String fx:value="Берёза" />
-                      <String fx:value="Тополь" />
-                      <String fx:value="Каштан" />
+                      <String fx:value="Берёза пушистая" />
+                      <String fx:value="Тополь белый" />
+                      <String fx:value="Конский каштан" />
+                      <String fx:value="Клён остролистный" />
+                      <String fx:value="Ясень обыкновенный" />
+                      <String fx:value="Рябина обыкновенная" />
+                      <String fx:value="Липа сердцевидная" />
+                      <String fx:value="Вяз шершавый" />
+                      <String fx:value="Ель колючая" />
+                      <String fx:value="Ель канадская" />
+                      <String fx:value="Ель сербская" />
                     </FXCollections>
                   </items>
                 </ChoiceBox>
@@ -123,7 +131,7 @@
               </VBox.margin>
             </VBox>
             <Separator disable="false" focusTraversable="true" prefWidth="180.0" style="" visible="true" VBox.vgrow="NEVER" />
-            <ListView fx:id="queryList" cache="false" cacheHint="DEFAULT" depthTest="DISABLE" disable="false" editable="false" focusTraversable="true" minHeight="-1.0" minWidth="-1.0" mouseTransparent="false" opacity="1.0" orientation="VERTICAL" pickOnBounds="true" prefHeight="300.0" prefWidth="180.0" style="-fx-background-color: #bdf0bf;" VBox.vgrow="ALWAYS" />
+            <ListView fx:id="queryList" cache="false" cacheHint="DEFAULT" depthTest="DISABLE" disable="false" editable="false" focusTraversable="true" minHeight="-1.0" minWidth="-1.0" mouseTransparent="false" opacity="1.0" orientation="VERTICAL" pickOnBounds="true" prefHeight="300.0" prefWidth="240.0" style="-fx-background-color: #bdf0bf;" VBox.vgrow="ALWAYS" />
           </children>
         </VBox>
       </children>
