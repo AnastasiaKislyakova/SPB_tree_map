@@ -98,6 +98,7 @@ public class MapCreator implements MapComponentInitializedListener {
                 markers.add(m);
             }
             statistics = new Statistics(markers.size(), db.getNumberOfSpecies());
+            System.out.println("statistics set");
         }
         catch (DBException e) {
             System.out.println("DBException from getALLTrees");;

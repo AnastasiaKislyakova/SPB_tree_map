@@ -47,10 +47,10 @@ public class MainStageController implements Initializable {
     private ImageView m = new ImageView();
 
     @FXML
-    private Label treesAmount = new Label();
+    private Button treesAmount;
 
     @FXML
-    private Label speciesAmount = new Label();
+    private Button speciesAmount;
 
     @FXML
     private ChoiceBox choiceSpesies;
@@ -103,9 +103,9 @@ public class MainStageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         markersBox.setOnMouseEntered(this::listenIcons);
         queryList.setOnMouseMoved(Event::consume);
+
 
         filterButton.setOnAction(this::openFilterPanel);
         addQueryButton.setOnAction(this::addNewQuery);
@@ -133,6 +133,7 @@ public class MainStageController implements Initializable {
     public void setMap(MapCreator map) {
         this.map = map;
         this.mainContent.getChildren().add(map.getMapView());
+        System.out.println(String.valueOf(map.getStatistics().getNumberOfSpecies()));
         speciesAmount.setText(String.valueOf(map.getStatistics().getNumberOfSpecies()));
 
         treesAmount.setText(String.valueOf(map.getStatistics().getNumberOfTrees()));
