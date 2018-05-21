@@ -66,9 +66,16 @@ public class MapCreator implements MapComponentInitializedListener {
 
                 map.addUIEventHandler(m,  UIEventType.click, (JSObject event) -> {
 
+                    String html =
+                            "<html>" +
+                                    "<img src='" +
+                                    "https://pp.userapi.com/c831308/v831308883/106683/KFPlAL069AE.jpg" +
+                                    "'width=50 height=auto > ";
+
                     InfoWindowOptions options = new InfoWindowOptions()
                             .position( new LatLong(m.getTree().getCoordinate().getLatitude(), m.getTree().getCoordinate().getLongitude()))
-                            .content("Диаметр: " + m.getTree().getTrunk() + "\n"
+                            .content("Вид: "+ m.getTree().getSpecies().getNameRus() + "\n" + "Диаметр: " + m.getTree().getTrunk() + "\n"
+                                    + html
                             );
                     InfoWindow window = new InfoWindow(options);
                     window.open(map, m);

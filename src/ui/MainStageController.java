@@ -33,6 +33,7 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 
 import javax.swing.*;
+import javax.xml.soap.Text;
 import java.net.URL;
 import java.util.*;
 
@@ -44,11 +45,16 @@ public class MainStageController implements Initializable {
     private MapCreator map;
 
     @FXML
+    private Label treesAmount = new Label();
+
+    @FXML
+    private Label speciesAmount = new Label();
+
+    @FXML
     private ChoiceBox choiceSpesies;
 
     @FXML
     private ImageView red;
-
     @FXML
     private ImageView yellow;
     @FXML
@@ -95,6 +101,11 @@ public class MainStageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        int sAmount = 7;
+
+        speciesAmount.setText(String.valueOf(sAmount));
+
+        treesAmount.setText(String.valueOf(10));
 
         markersBox.setOnMouseEntered(this::listenIcons);
         queryList.setOnMouseMoved(Event::consume);
