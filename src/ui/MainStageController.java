@@ -1,6 +1,8 @@
 package ui;
 
 import com.lynden.gmapsfx.GoogleMapView;
+import com.lynden.gmapsfx.javascript.object.MapShape;
+import com.lynden.gmapsfx.javascript.object.Marker;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -13,6 +15,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxListCell;
@@ -39,6 +42,7 @@ public class MainStageController implements Initializable {
     private Stage primaryStage;
     private Image selectedMarker;
     private String markerColor;
+    private MapCreator map;
 
     @FXML
     private ChoiceBox choiceSpesies;
@@ -94,6 +98,7 @@ public class MainStageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         markersBox.setOnMouseEntered(this::listenIcons);
+        queryList.setOnMouseMoved(this::updateVisibility);
 
         filterButton.setOnAction(this::openFilterPanel);
         addQueryButton.setOnAction(this::addNewQuery);
@@ -119,14 +124,16 @@ public class MainStageController implements Initializable {
 
     }
 
-    public void setMap(GoogleMapView map) {
-        this.mainContent.getChildren().add(map);
+    public void setMap(MapCreator map) {
+        this.map = map;
+        this.mainContent.getChildren().add(map.getMapView());
     }
 
     @FXML
     public void addNewQuery(ActionEvent actionEvent) {
         Query q = new Query(choiceSpesies.getValue().toString(), selectedMarker);
         queryList.getItems().add(q);
+
     }
 
 
@@ -145,7 +152,6 @@ public class MainStageController implements Initializable {
         }
 
     }
-
 
     private void setSelected(Image selected, String color) {
             this.selectedMarker = selected;
@@ -266,6 +272,21 @@ public class MainStageController implements Initializable {
                 event.consume();
             }
         });
+
+    }
+
+
+    public void updateVisibility(MouseEvent mouseEvent) {
+        System.out.println("list viewwwww");
+        Query q =  queryList.getSelectionModel().getSelectedItem();
+        CheckBox c = q.getVisibility();
+
+//        if (!c.isSelected()) {
+//            for (Node m : map.getChildren()){
+//                if (m instanceof Marker)
+//            }
+//        }
+
 
     }
 }

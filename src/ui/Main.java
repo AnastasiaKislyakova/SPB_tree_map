@@ -2,6 +2,9 @@ package ui;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.javascript.event.GMapMouseEvent;
+import com.lynden.gmapsfx.javascript.object.Animation;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import db.DBException;
 import db.DBService;
 import db.DBServiceImpl;
@@ -20,14 +23,12 @@ import java.util.List;
 
 public class Main extends Application {
 
-    SPBTreeDAO treeDAO = new SPBTreeDAO();
+//    SPBTreeDAO treeDAO = new SPBTreeDAO();
     DBService db = new DBServiceImpl();
 
     GoogleMapView mapView;
 
-<<<<<<< HEAD
 
-=======
     // example of work with database
     public void doSomething() throws DBException {
      //   List<Tree> trees = treeDAO.getAllTrees();
@@ -35,12 +36,11 @@ public class Main extends Application {
         List<Tree> trees = db.getAllMarkers();
         trees.forEach(System.out::println);
     }
->>>>>>> 9fd26e372b366c882a2cfcdeb169fe2746ab626f
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        List<Tree> trees = treeDAO.getAllTrees();
+//        List<Tree> trees = treeDAO.getAllTrees();
 
         primaryStage.setTitle("Карта деревьев");
         primaryStage.getIcons().add(new Image("file:src/leaf.png"));
@@ -48,28 +48,10 @@ public class Main extends Application {
         AnchorPane root = loader.load();
 
         MapCreator mapController = new MapCreator();
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-       // GoogleMapView m = mapController.getMapView();
-
-       // MainStageController controller = loader.getController();
-       // controller.setMap(m);
-=======
-//<<<<<<< HEAD
-//        GoogleMapView m = mapController.getMapView();
-//
-//        MainStageController controller = loader.getController();
-//        controller.setMap(m);
-//=======
->>>>>>> 9fd26e372b366c882a2cfcdeb169fe2746ab626f
->>>>>>> aaf93ddc24dd1259767e5a0bf90d0eb1e55b2467
-        mapView = mapController.getMapView();
 
         MainStageController controller = loader.getController();
-        controller.setMap(mapView);
+        controller.setMap(mapController);
+
         controller.setPrimaryStage(primaryStage);
 
         primaryStage.setScene(new Scene(root));

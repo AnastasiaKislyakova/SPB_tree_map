@@ -1,6 +1,8 @@
 package ui;
 
 
+import javafx.beans.InvalidationListener;
+import javafx.event.Event;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
@@ -12,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
+import java.util.Observable;
 
 
 public class Query extends HBox {
@@ -26,15 +29,12 @@ public class Query extends HBox {
     public Query(String species, Image image){
         super(20);
         this.species.setText(species);
-//        this.color.setRadius(7);
-//        this.color.setFill(color);
-//        this.color.setStroke(Color.BLACK);
+
         this.marker = new ImageView(image);
         this.visibility.setSelected(true);
 
         getChildren().addAll(this.species, marker, visibility);
     }
-
 
 
     public CheckBox getVisibility() {
@@ -44,4 +44,5 @@ public class Query extends HBox {
     public void setSelected(boolean value) {
         visibility.setSelected(value);
     }
+
 }
