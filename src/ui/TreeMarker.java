@@ -2,6 +2,7 @@ package ui;
 
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
+import model.LeafPhoto;
 import model.Tree;
 import netscape.javascript.JSObject;
 

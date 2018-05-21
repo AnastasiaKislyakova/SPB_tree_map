@@ -8,12 +8,14 @@ public class Tree {
     private final Species species;
     private final Coordinate coordinate;
     private final double trunk; // mm
+    private final LeafPhoto leafPhoto;
 
-    public Tree(int id, Species species, Coordinate coordinate, double trunk) {
+    public Tree(int id, Species species, Coordinate coordinate, double trunk, LeafPhoto leafPhoto) {
         this.id = id;
         this.species = species;
         this.coordinate = coordinate;
         this.trunk = trunk;
+        this.leafPhoto = leafPhoto;
     }
 
     public int getId() {
