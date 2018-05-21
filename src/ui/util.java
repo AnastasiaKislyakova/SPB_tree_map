@@ -11,7 +11,7 @@ import java.util.List;
 
 public class util {
 
-
-
+    public final static String ICONPATH = "http://maps.google.com/mapfiles/ms/icons/";
+    public final static String DEFAULT = "red";
 
 }

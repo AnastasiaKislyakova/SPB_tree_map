@@ -78,15 +78,18 @@ public class MainStageController implements Initializable {
     @FXML
     private Button recognizeButton;
 
-
     private TranslateTransition openNav;
     private TranslateTransition closeNav;
-    private final static String DEFAULT = "red";
-    public final static String ICONPATH = "http://maps.google.com/mapfiles/ms/icons/";
 
 
     public void setPrimaryStage(Stage stage) {
         this.primaryStage = stage;
+    }
+
+    public void showStatistics(){
+        System.out.println(map.getStatistics().getNumberOfSpecies() + " " +map.getStatistics().getNumberOfTrees());
+        speciesAmount.setText(String.valueOf(map.getStatistics().getNumberOfSpecies()));
+        treesAmount.setText(String.valueOf(map.getStatistics().getNumberOfTrees()));
     }
 
     @Override
@@ -121,10 +124,7 @@ public class MainStageController implements Initializable {
     public void setMap(MapCreator map) {
         this.map = map;
         this.mainContent.getChildren().add(map.getMapView());
-        System.out.println(String.valueOf(map.getStatistics().getNumberOfSpecies()));
-        speciesAmount.setText(String.valueOf(map.getStatistics().getNumberOfSpecies()));
 
-        treesAmount.setText(String.valueOf(map.getStatistics().getNumberOfTrees()));
     }
 
     public MapCreator getMap() {
@@ -135,7 +135,7 @@ public class MainStageController implements Initializable {
         MarkerOptions mo = new MarkerOptions();
         for (TreeMarker tm : map.getMarkers()) {
             tm.setVisible(state);
-            tm.setOptions(mo.icon(ICONPATH + DEFAULT + ".png"));
+            tm.setOptions(mo.icon(util.ICONPATH + util.DEFAULT + ".png"));
         }
     }
 
@@ -176,7 +176,7 @@ public class MainStageController implements Initializable {
 
     private void setSelected(Image selected, String color, ImageView imageView) {
         this.selectedMarker = selected;
-        markerColor = ICONPATH + color + ".png";
+        markerColor = util.ICONPATH + color + ".png";
         this.m = imageView;
 
     }

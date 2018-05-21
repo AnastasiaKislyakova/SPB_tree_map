@@ -10,8 +10,7 @@ import netscape.javascript.JSObject;
 
 
 import db.DBException;
-import db.DBService;
-import db.DBServiceImpl;
+
 import db.SPBTreeDAO;
 
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ public class MapCreator implements MapComponentInitializedListener {
     public GoogleMap map;
     private List<Tree> trees = new ArrayList<Tree>();
     private List<TreeMarker> markers = new ArrayList<TreeMarker>();
+    private MainStageController msc;
     private Statistics statistics = new Statistics(0,0);
 
     public Statistics getStatistics() {
@@ -33,9 +33,10 @@ public class MapCreator implements MapComponentInitializedListener {
         return markers;
     }
 
-    MapCreator() {
+    MapCreator(MainStageController msc) {
         mapView = new GoogleMapView();
         mapView.addMapInitializedListener(this);
+        this.msc = msc;
     }
 
     GoogleMapView getMapView(){
@@ -62,16 +63,14 @@ public class MapCreator implements MapComponentInitializedListener {
         MarkerOptions markerOptions = new MarkerOptions();
 
         SPBTreeDAO db = new SPBTreeDAO();
-      //  DBService  db = new DBServiceImpl();
 
 
         try {
-          //  trees = treeDAO.getAllTrees();
             trees = db.getAllTrees();
             for (Tree t : trees){
                 markerOptions.position( new LatLong(t.getCoordinate().getLatitude(), t.getCoordinate().getLongitude()) )
                         .visible(Boolean.TRUE)
-                        .icon(util.iconPath + util.MarkerStyle.red
+                        .icon(util.ICONPATH + util.DEFAULT
                                 + ".png")
                         .animation(Animation.NULL);
 
@@ -96,7 +95,8 @@ public class MapCreator implements MapComponentInitializedListener {
                 markers.add(m);
             }
             statistics = new Statistics(markers.size(), db.getNumberOfSpecies());
-            System.out.println("statistics set");
+            System.out.println("statistics set " + statistics.getNumberOfSpecies() + statistics.getNumberOfTrees());
+            msc.showStatistics();
         }
         catch (DBException e) {
             System.out.println("DBException from getALLTrees");;

@@ -22,11 +22,8 @@ public class TreeMarker extends Marker{
         return tree;
     }
 
-<<<<<<< HEAD
     public String getDescription(){
         return "Вид: " + tree.getSpecies().getNameRus() + " (" + tree.getSpecies().getNameLat()+"), Диаметр:" + tree.getTrunk();
     }
-=======
->>>>>>> f8bd51bfb86ffa4c7b24b3b50c30ca883c101712
-
+    
 }

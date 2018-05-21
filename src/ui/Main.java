@@ -22,9 +22,9 @@ public class Main extends Application {
 
         AnchorPane root = loader.load();
 
-        MapCreator mapController = new MapCreator();
-
         MainStageController controller = loader.getController();
+
+        MapCreator mapController = new MapCreator(controller);
 
         controller.setMap(mapController);
 
@@ -32,6 +32,7 @@ public class Main extends Application {
 
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
 
     }
 
