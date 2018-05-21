@@ -1,40 +1,25 @@
 package ui;
 
-import com.lynden.gmapsfx.GoogleMapView;
-import com.lynden.gmapsfx.javascript.object.MapShape;
-import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import javafx.animation.TranslateTransition;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
-import javax.swing.*;
-import javax.xml.soap.Text;
 import java.net.URL;
 import java.util.*;
 
@@ -96,6 +81,9 @@ public class MainStageController implements Initializable {
 
     private TranslateTransition openNav;
     private TranslateTransition closeNav;
+    private final static String DEFAULT = "red";
+    public final static String ICONPATH = "http://maps.google.com/mapfiles/ms/icons/";
+
 
     public void setPrimaryStage(Stage stage) {
         this.primaryStage = stage;
@@ -146,7 +134,7 @@ public class MainStageController implements Initializable {
         MarkerOptions mo = new MarkerOptions();
         for (TreeMarker tm : map.getMarkers()) {
             tm.setVisible(state);
-            tm.setOptions(mo.icon(util.iconPath + util.MarkerStyle.red + ".png"));
+            tm.setOptions(mo.icon(ICONPATH + DEFAULT + ".png"));
         }
     }
 
@@ -176,7 +164,7 @@ public class MainStageController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("recognizingSystem.fxml"));
             Stage secondStage = new Stage();
             AnchorPane root = loader.load();
-            //RecognizingSystemController controller = loader.getController();
+            
             secondStage.setScene(new Scene(root));
             secondStage.show();
         } catch (Exception e) {
@@ -187,7 +175,7 @@ public class MainStageController implements Initializable {
 
     private void setSelected(Image selected, String color, ImageView imageView) {
         this.selectedMarker = selected;
-        markerColor = util.iconPath + color + ".png";
+        markerColor = ICONPATH + color + ".png";
         this.m = imageView;
 
     }

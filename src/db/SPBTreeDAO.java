@@ -1,8 +1,5 @@
 package db;
 
-import com.lynden.gmapsfx.javascript.object.Animation;
-import com.lynden.gmapsfx.javascript.object.LatLong;
-import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import com.mysql.jdbc.Driver;
 import db.executor.Executor;
 import db.executor.ResultHandler;
@@ -10,8 +7,6 @@ import model.Coordinate;
 import model.LeafPhoto;
 import model.Species;
 import model.Tree;
-import ui.TreeMarker;
-import ui.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

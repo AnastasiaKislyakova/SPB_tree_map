@@ -87,9 +87,7 @@ public class MapCreator implements MapComponentInitializedListener {
 
                     InfoWindowOptions options = new InfoWindowOptions()
                             .position( new LatLong(m.getTree().getCoordinate().getLatitude(), m.getTree().getCoordinate().getLongitude()))
-                            .content("Вид: "+ m.getTree().getSpecies().getNameRus() + "\n" + "Диаметр: " + m.getTree().getTrunk() + "\n"
-                                    + html
-                            );
+                            .content(m.getDescription() + "\n" + html);
                     InfoWindow window = new InfoWindow(options);
                     window.open(map, m);
                 } );
